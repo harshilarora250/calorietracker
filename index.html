@@ -8,23 +8,20 @@
   <style>
     :root {
       --bg: #020617;
-      --bg-elevated: #0b1120;
+      --bg-card: #0b1120;
       --bg-soft: #020617;
       --border-subtle: #1f2937;
       --border-strong: #4b5563;
       --accent: #22c55e;
       --accent-soft: rgba(34, 197, 94, 0.14);
-      --accent-strong: rgba(34, 197, 94, 0.4);
-      --accent-alt: #38bdf8;
       --danger: #ef4444;
       --danger-soft: rgba(239, 68, 68, 0.16);
       --text: #e5e7eb;
       --text-muted: #9ca3af;
-      --radius-xl: 20px;
-      --radius-lg: 16px;
+      --radius-lg: 18px;
       --radius-md: 10px;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
-      --shadow-sm: 0 10px 25px rgba(0, 0, 0, 0.3);
+      --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.45);
+      --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
 
     * {
@@ -36,148 +33,94 @@
       min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top, #1f2937 0, #020617 46%, #020617 100%);
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #020617 100%);
       color: var(--text);
       display: flex;
       justify-content: center;
       padding: 18px 14px;
     }
 
-    .app-shell {
+    .app {
       width: 100%;
-      max-width: 1080px;
+      max-width: 1100px;
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
+
+    /* HEADER */
 
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
-      padding: 4px 2px;
+      padding: 2px 2px 4px;
     }
 
-    .header-main {
+    .header-left {
       display: flex;
+      gap: 12px;
       align-items: center;
-      gap: 10px;
+      min-width: 0;
     }
 
-    .logo-pill {
-      width: 36px;
-      height: 36px;
-      border-radius: 14px;
-      background: radial-gradient(circle at 10% 0, #22c55e, #38bdf8);
-      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.5),
-        0 14px 30px rgba(34, 197, 94, 0.45);
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 16px;
+      background: radial-gradient(circle at 0 0, #22c55e, #16a34a 45%, #0ea5e9 100%);
+      box-shadow: 0 12px 24px rgba(34, 197, 94, 0.5);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.85rem;
       font-weight: 700;
+      font-size: 0.9rem;
       color: #022c22;
+      flex-shrink: 0;
     }
 
-    .header-text h1 {
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .title-block h1 {
       margin: 0;
       font-size: 1.35rem;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
       display: flex;
-      align-items: center;
       gap: 8px;
+      align-items: center;
+      white-space: nowrap;
     }
 
-    .header-text p {
-      margin: 4px 0 0;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .tag {
-      font-size: 0.65rem;
-      padding: 3px 8px;
+    .badge {
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 3px 8px;
+      font-size: 0.7rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
 
-    main {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .card {
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), #020617);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(51, 65, 85, 0.9);
-      box-shadow: var(--shadow-soft);
-      padding: 14px 16px 13px;
-      backdrop-filter: blur(18px);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .card-title {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .card-title h2 {
+    .title-block p {
       margin: 0;
-      font-size: 0.95rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .card-title span {
       font-size: 0.8rem;
       color: var(--text-muted);
-    }
-
-    .chip {
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: rgba(15, 23, 42, 0.96);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
       white-space: nowrap;
-    }
-
-    .chip-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: radial-gradient(circle, var(--accent) 0, #166534 55%, transparent 60%);
-    }
-
-    .chip-label {
-      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .btn {
       border-radius: 999px;
       padding: 7px 14px;
       border: none;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 500;
       cursor: pointer;
       display: inline-flex;
@@ -189,22 +132,10 @@
         border-color 0.15s ease;
     }
 
-    .btn-primary {
-      background: radial-gradient(circle at top, var(--accent), #16a34a);
-      color: #022c22;
-      box-shadow: 0 12px 25px var(--accent-strong);
-      border: 1px solid rgba(22, 163, 74, 0.9);
-    }
-
-    .btn-primary:active {
-      transform: translateY(1px) scale(0.99);
-      box-shadow: 0 5px 12px rgba(34, 197, 94, 0.45);
-    }
-
     .btn-muted {
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.95);
       border: 1px solid rgba(75, 85, 99, 0.9);
+      color: var(--text-muted);
       box-shadow: none;
     }
 
@@ -213,34 +144,131 @@
       box-shadow: 0 4px 10px rgba(15, 23, 42, 0.9);
     }
 
-    .btn-icon {
-      border-radius: 999px;
-      padding: 5px 8px;
-      font-size: 0.72rem;
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: rgba(15, 23, 42, 0.96);
+    /* LAYOUT */
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      padding: 16px 16px 14px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .card-header-main {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .card-header-main h2 {
+      margin: 0;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
       color: var(--text-muted);
-      cursor: pointer;
+    }
+
+    .card-header-main span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .chip {
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: rgba(15, 23, 42, 0.98);
+      padding: 4px 9px;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-    }
-
-    .btn-danger {
-      background: var(--danger-soft);
-      border-color: rgba(248, 113, 113, 0.78);
-      color: #fecaca;
-    }
-
-    .btn-danger:active {
-      transform: translateY(1px) scale(0.99);
-      box-shadow: 0 4px 10px rgba(248, 113, 113, 0.35);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      border-color: rgba(75, 85, 99, 0.8);
+      gap: 6px;
+      font-size: 0.78rem;
       color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .chip-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent) 0, #15803d 55%, transparent 60%);
+    }
+
+    /* SUMMARY CARD */
+
+    .goal-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) auto;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .field label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--text);
+      font-size: 0.85rem;
+      outline: none;
+      transition: border 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+
+    .field input[type="number"]::-webkit-inner-spin-button,
+    .field input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .field input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #16a34a);
+      border: 1px solid #16a34a;
+      color: #022c22;
+      box-shadow: 0 10px 22px rgba(34, 197, 94, 0.45);
+      font-size: 0.82rem;
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px) scale(0.99);
+      box-shadow: 0 5px 12px rgba(34, 197, 94, 0.45);
     }
 
     .stats-row {
@@ -250,27 +278,23 @@
       margin-bottom: 12px;
     }
 
-    .stat-card {
-      background:
-        radial-gradient(circle at 0 -40%, var(--accent-soft), #020617 55%, #020617 100%);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(30, 64, 175, 0.65);
-      padding: 8px 10px;
-      box-shadow: var(--shadow-sm);
-      position: relative;
-      overflow: hidden;
+    .stat {
+      border-radius: 14px;
+      background: radial-gradient(circle at -10% -20%, var(--accent-soft), #020617);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 9px 10px;
+      box-shadow: var(--shadow-soft);
     }
 
-    .stat-card.secondary {
-      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.12), #020617);
-      border-color: rgba(55, 65, 81, 0.95);
+    .stat.secondary {
+      background: #020617;
     }
 
     .stat-label {
       font-size: 0.7rem;
+      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--text-muted);
       margin-bottom: 2px;
     }
 
@@ -289,57 +313,9 @@
     }
 
     .stat-sub {
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
       margin-top: 2px;
-    }
-
-    .goal-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) auto;
-      gap: 10px;
-      margin-bottom: 10px;
-      align-items: center;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .field label {
-      font-size: 0.76rem;
-      color: var(--text-muted);
-    }
-
-    .field input,
-    .field select {
-      width: 100%;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.95);
-      background: rgba(15, 23, 42, 0.95);
-      color: var(--text);
-      font-size: 0.85rem;
-      outline: none;
-      transition: border 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
-    }
-
-    .field input:focus,
-    .field select:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px var(--accent-strong);
-    }
-
-    .field input[type="number"]::-webkit-inner-spin-button,
-    .field input[type="number"]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    .field input[type="number"] {
-      -moz-appearance: textfield;
     }
 
     .summary-layout {
@@ -349,22 +325,22 @@
       margin-top: 6px;
     }
 
-    .progress-ring {
+    .ring {
       width: 120px;
       height: 120px;
-      flex-shrink: 0;
       position: relative;
+      flex-shrink: 0;
     }
 
-    .progress-ring svg {
+    .ring svg {
       transform: rotate(-90deg);
     }
 
-    .progress-ring circle {
+    .ring circle {
       transition: stroke-dashoffset 0.3s ease;
     }
 
-    .progress-center {
+    .ring-center {
       position: absolute;
       inset: 0;
       display: flex;
@@ -374,23 +350,23 @@
       pointer-events: none;
     }
 
-    .progress-percent {
+    .ring-percent {
       font-size: 1.1rem;
       font-weight: 600;
     }
 
-    .progress-label {
-      font-size: 0.75rem;
+    .ring-label {
+      font-size: 0.76rem;
       color: var(--text-muted);
     }
 
-    .progress-chip {
-      font-size: 0.72rem;
+    .ring-chip {
+      font-size: 0.74rem;
       border-radius: 999px;
       padding: 2px 8px;
       margin-top: 4px;
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      background: rgba(15, 23, 42, 0.98);
     }
 
     .info-stack {
@@ -416,31 +392,26 @@
 
     .alert-info {
       background: rgba(37, 99, 235, 0.08);
-      border: 1px solid rgba(37, 99, 235, 0.45);
+      border: 1px solid rgba(37, 99, 235, 0.5);
       color: #bfdbfe;
     }
 
     .alert-danger {
       background: var(--danger-soft);
-      border: 1px solid rgba(248, 113, 113, 0.85);
+      border: 1px solid rgba(248, 113, 113, 0.9);
       color: #fecaca;
-    }
-
-    .alert p {
-      margin: 0;
     }
 
     .legend-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      justify-content: flex-start;
       margin-top: 4px;
+      color: var(--text-muted);
+      font-size: 0.75rem;
     }
 
     .legend-item {
-      font-size: 0.75rem;
-      color: var(--text-muted);
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -467,7 +438,8 @@
       text-align: right;
     }
 
-    /* Right side / log */
+    /* LOG CARD */
+
     .date-row {
       display: flex;
       align-items: center;
@@ -487,13 +459,13 @@
       border-radius: 999px;
       border: 1px solid rgba(55, 65, 81, 0.95);
       padding: 5px 8px;
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(15, 23, 42, 0.96);
       color: var(--text);
       font-size: 0.8rem;
       outline: none;
     }
 
-    .subtle-label {
+    .text-muted {
       font-size: 0.78rem;
       color: var(--text-muted);
     }
@@ -504,27 +476,14 @@
 
     .form-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.5fr) 0.9fr 0.9fr auto;
+      grid-template-columns: minmax(0, 1.4fr) 1.1fr 0.9fr auto;
       gap: 8px;
       margin-bottom: 8px;
-    }
-
-    .ai-helper-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) auto;
-      gap: 8px;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .ai-hint {
-      font-size: 0.72rem;
-      color: var(--text-muted);
     }
 
     .divider {
       border-top: 1px dashed rgba(55, 65, 81, 0.9);
-      margin: 8px 0 8px;
+      margin: 8px 0;
     }
 
     .entries-list {
@@ -541,9 +500,9 @@
       align-items: center;
       padding: 7px 9px;
       margin-bottom: 6px;
-      border-radius: var(--radius-lg);
-      background: rgba(15, 23, 42, 0.97);
-      border: 1px solid rgba(30, 64, 175, 0.54);
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(30, 64, 175, 0.55);
     }
 
     .entry-main {
@@ -565,22 +524,16 @@
       font-size: 0.72rem;
       color: var(--text-muted);
       display: flex;
-      align-items: center;
-      gap: 6px;
       flex-wrap: wrap;
+      gap: 6px;
     }
 
-    .badge {
+    .badge-pill {
       border-radius: 999px;
       padding: 1px 7px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.7);
       font-size: 0.7rem;
       color: var(--text-muted);
-    }
-
-    .badge-type {
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
     }
 
     .entry-calories {
@@ -595,19 +548,34 @@
       gap: 4px;
     }
 
-    .empty-state {
+    .btn-icon {
+      border-radius: 999px;
+      padding: 4px 7px;
+      border: 1px solid rgba(75, 85, 99, 0.95);
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-danger {
+      background: var(--danger-soft);
+      border-color: rgba(248, 113, 113, 0.9);
+      color: #fecaca;
+    }
+
+    .empty {
       font-size: 0.8rem;
       color: var(--text-muted);
       text-align: center;
-      padding: 16px 8px 4px;
+      padding: 18px 8px 4px;
     }
 
     .entries-list::-webkit-scrollbar {
       width: 4px;
-    }
-
-    .entries-list::-webkit-scrollbar-track {
-      background: transparent;
     }
 
     .entries-list::-webkit-scrollbar-thumb {
@@ -615,18 +583,15 @@
       border-radius: 999px;
     }
 
+    /* RESPONSIVE */
+
     @media (max-width: 900px) {
       main {
         grid-template-columns: minmax(0, 1fr);
       }
-
-      .progress-ring {
+      .ring {
         width: 110px;
         height: 110px;
-      }
-
-      .stats-row {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
 
@@ -640,16 +605,12 @@
         align-items: flex-start;
       }
 
-      .header-main {
-        width: 100%;
-      }
-
-      .header-text h1 {
-        font-size: 1.16rem;
+      .title-block h1 {
+        font-size: 1.18rem;
       }
 
       .card {
-        padding: 12px 12px 11px;
+        padding: 13px 12px 11px;
       }
 
       .summary-layout {
@@ -657,7 +618,7 @@
         align-items: stretch;
       }
 
-      .progress-ring {
+      .ring {
         margin: 0 auto;
       }
 
@@ -666,7 +627,7 @@
       }
 
       .form-grid {
-        grid-template-columns: minmax(0, 1.5fr) 0.9fr;
+        grid-template-columns: minmax(0, 1.2fr) 1.1fr;
         grid-template-rows: auto auto;
       }
 
@@ -680,16 +641,12 @@
         justify-self: stretch;
       }
 
-      .ai-helper-row {
-        grid-template-columns: minmax(0, 1.3fr);
-      }
-
       .entries-list {
         max-height: 280px;
       }
 
       .entry {
-        grid-template-columns: minmax(0, 1.6fr) 0.9fr;
+        grid-template-columns: minmax(0, 1.5fr) 0.9fr;
         grid-template-rows: auto auto;
       }
 
@@ -701,34 +658,34 @@
   </style>
 </head>
 <body>
-  <div class="app-shell">
+  <div class="app">
     <header>
-      <div class="header-main">
-        <div class="logo-pill">CT</div>
-        <div class="header-text">
+      <div class="header-left">
+        <div class="logo">CT</div>
+        <div class="title-block">
           <h1>
             Calorie Tracker
-            <span class="tag">Local cache · Open data AI</span>
+            <span class="badge">Local cache · Built-in model</span>
           </h1>
-          <p>Track your day and auto-estimate calories from food name + weight.</p>
+          <p>Type food + grams · calories are estimated automatically.</p>
         </div>
       </div>
       <button id="resetAllBtn" class="btn btn-muted" type="button">
-        Reset everything
+        Reset all data
       </button>
     </header>
 
     <main>
-      <!-- LEFT: Overview -->
+      <!-- LEFT: SUMMARY -->
       <section class="card">
         <div class="card-header">
-          <div class="card-title">
-            <h2>Today overview</h2>
+          <div class="card-header-main">
+            <h2>Today summary</h2>
             <span id="currentDateLabel"></span>
           </div>
           <div class="chip">
             <span class="chip-dot"></span>
-            <span class="chip-label">Synced to this browser</span>
+            <span>Stored only in this browser</span>
           </div>
         </div>
 
@@ -743,7 +700,7 @@
         </div>
 
         <div class="stats-row">
-          <div class="stat-card">
+          <div class="stat">
             <div class="stat-label">Consumed</div>
             <div class="stat-value">
               <span id="statConsumed">0</span>
@@ -751,7 +708,7 @@
             </div>
             <div class="stat-sub" id="statConsumedCount">0 entries</div>
           </div>
-          <div class="stat-card secondary">
+          <div class="stat secondary">
             <div class="stat-label">Remaining</div>
             <div class="stat-value">
               <span id="statRemaining">0</span>
@@ -759,7 +716,7 @@
             </div>
             <div class="stat-sub" id="statRemainingHint">Set a goal to see remaining</div>
           </div>
-          <div class="stat-card secondary">
+          <div class="stat secondary">
             <div class="stat-label">Balance</div>
             <div class="stat-value">
               <span id="statBalance">0</span>
@@ -770,10 +727,10 @@
         </div>
 
         <div class="summary-layout">
-          <div class="progress-ring">
+          <div class="ring">
             <svg width="120" height="120">
               <defs>
-                <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stop-color="#22c55e" />
                   <stop offset="50%" stop-color="#16a34a" />
                   <stop offset="100%" stop-color="#38bdf8" />
@@ -792,7 +749,7 @@
                 cx="60"
                 cy="60"
                 r="48"
-                stroke="url(#progressGradient)"
+                stroke="url(#ringGradient)"
                 stroke-width="8"
                 stroke-linecap="round"
                 fill="none"
@@ -800,10 +757,10 @@
                 stroke-dashoffset="301.59"
               ></circle>
             </svg>
-            <div class="progress-center">
-              <div class="progress-percent" id="progressPercent">0%</div>
-              <div class="progress-label" id="progressLabel">of daily goal</div>
-              <div class="progress-chip" id="progressBadge">Set a goal to begin</div>
+            <div class="ring-center">
+              <div class="ring-percent" id="progressPercent">0%</div>
+              <div class="ring-label" id="progressLabel">of daily goal</div>
+              <div class="ring-chip" id="progressBadge">Set a goal to begin</div>
             </div>
           </div>
 
@@ -811,15 +768,14 @@
             <div class="alert alert-info">
               <div class="alert-icon">ℹ</div>
               <p id="infoText">
-                Entries and goals are stored in <strong>localStorage</strong>. Calorie
-                estimates use the free, open Open Food Facts database (no signup).
+                Everything (goal and entries) is stored in <strong>localStorage</strong>.
+                Calories are estimated on-device by a small rule-based model.
               </p>
             </div>
             <div id="overGoalAlert" class="alert alert-danger" style="display:none;">
               <div class="alert-icon">!</div>
               <p id="overGoalText"></p>
             </div>
-
             <div class="legend-row">
               <div class="legend-item">
                 <span class="legend-swatch swatch-consumed"></span>
@@ -834,16 +790,16 @@
         </div>
 
         <div class="footer-note">
-          Switch the date on the right to review or edit previous days.
+          Change the date on the right to review or edit previous days.
         </div>
       </section>
 
-      <!-- RIGHT: Log & AI helper -->
+      <!-- RIGHT: LOG -->
       <section class="card">
         <div class="card-header">
-          <div class="card-title">
-            <h2>Log entries</h2>
-            <span class="subtle-label">Meals, snacks, drinks for a single day.</span>
+          <div class="card-header-main">
+            <h2>Log meals</h2>
+            <span class="text-muted">Food name + grams → model estimates calories.</span>
           </div>
           <div class="date-row">
             <div class="date-picker">
@@ -859,55 +815,46 @@
         <form id="entryForm" autocomplete="off">
           <div class="form-grid">
             <div class="field">
-              <label for="mealName">Food / meal</label>
+              <label for="mealName">Food / description</label>
               <input
                 id="mealName"
                 type="text"
-                placeholder="e.g. Chicken wrap"
+                placeholder="e.g. chicken wrap, banana, pizza slice"
                 required
               />
             </div>
             <div class="field">
-              <label for="mealCalories">Calories (kcal)</label>
+              <label for="mealGrams">Portion (grams)</label>
               <input
-                id="mealCalories"
+                id="mealGrams"
                 type="number"
-                min="0"
+                min="1"
                 inputmode="numeric"
-                placeholder="e.g. 450"
+                placeholder="e.g. 120"
                 required
               />
             </div>
             <div class="field">
-              <label for="mealType">Type</label>
-              <select id="mealType">
-                <option value="meal">Meal</option>
-                <option value="snack">Snack</option>
-                <option value="drink">Drink</option>
+              <label for="mealCategory">Category</label>
+              <select id="mealCategory">
+                <option value="auto">Auto detect</option>
+                <option value="fruit">Fruit</option>
+                <option value="vegetable">Vegetable</option>
+                <option value="lean_protein">Lean protein</option>
+                <option value="fatty_protein">Fatty protein</option>
+                <option value="starch">Rice / pasta / potato</option>
+                <option value="bread">Bread / baked</option>
+                <option value="snack_sweet">Sweet snack / dessert</option>
+                <option value="snack_savory">Chips / savory snack</option>
+                <option value="fast_food">Fast food / mixed meal</option>
+                <option value="cheese">Cheese</option>
+                <option value="nuts">Nuts / seeds</option>
+                <option value="drink_sugary">Sugary drink / juice</option>
+                <option value="drink_zero">Zero-cal drink</option>
               </select>
             </div>
             <button class="btn btn-primary" type="submit">
               + Add
-            </button>
-          </div>
-
-          <div class="ai-helper-row">
-            <div class="field">
-              <label for="mealGrams">Weight (g) for AI estimate (optional)</label>
-              <input
-                id="mealGrams"
-                type="number"
-                min="0"
-                inputmode="numeric"
-                placeholder="e.g. 120 for a banana"
-              />
-              <div class="ai-hint">
-                AI will look up a similar food in Open Food Facts and estimate kcal
-                for your weight.
-              </div>
-            </div>
-            <button id="aiEstimateBtn" class="btn btn-ghost" type="button">
-              ⚡ AI estimate
             </button>
           </div>
         </form>
@@ -915,7 +862,7 @@
         <div class="divider"></div>
 
         <div id="entriesList" class="entries-list"></div>
-        <div id="emptyState" class="empty-state">
+        <div id="emptyState" class="empty">
           No entries for this day yet. Add your first one above.
         </div>
       </section>
@@ -924,7 +871,7 @@
 
   <script>
     (function () {
-      const STORAGE_KEY = "calorieTrackerData_v2"; // new key so old broken data won't clash
+      const STORAGE_KEY = "calorieTrackerData_v3";
 
       function loadData() {
         try {
@@ -939,13 +886,14 @@
                   id: e.id || String(Math.random()),
                   date: e.date,
                   name: e.name,
+                  grams: Number(e.grams) || 0,
                   calories: Number(e.calories) || 0,
-                  type: e.type || "meal",
+                  category: e.category || "auto",
+                  modelBasis: e.modelBasis || null,
                 }))
               : [],
           };
-        } catch (err) {
-          console.warn("Failed to parse stored data, resetting.", err);
+        } catch {
           return { goal: null, entries: [] };
         }
       }
@@ -955,6 +903,8 @@
       }
 
       const data = loadData();
+
+      /* DOM ELEMENTS */
 
       const dailyGoalInput = document.getElementById("dailyGoal");
       const saveGoalBtn = document.getElementById("saveGoalBtn");
@@ -982,10 +932,8 @@
 
       const entryForm = document.getElementById("entryForm");
       const mealNameInput = document.getElementById("mealName");
-      const mealCaloriesInput = document.getElementById("mealCalories");
-      const mealTypeSelect = document.getElementById("mealType");
       const mealGramsInput = document.getElementById("mealGrams");
-      const aiEstimateBtn = document.getElementById("aiEstimateBtn");
+      const mealCategorySelect = document.getElementById("mealCategory");
 
       const entriesListEl = document.getElementById("entriesList");
       const emptyStateEl = document.getElementById("emptyState");
@@ -993,25 +941,27 @@
       const circleRadius = 48;
       const circleCircumference = 2 * Math.PI * circleRadius;
 
+      /* DATES */
+
       function todayISO() {
         const d = new Date();
-        const year = d.getFullYear();
-        const month = String(d.getMonth() + 1).padStart(2, "0");
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, "0");
         const day = String(d.getDate()).padStart(2, "0");
-        return year + "-" + month + "-" + day;
+        return y + "-" + m + "-" + day;
       }
 
       function formatDateLabel(dateStr) {
         const date = new Date(dateStr + "T00:00");
         const todayStr = todayISO();
         if (dateStr === todayStr) return "Today";
-        const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
+        const yest = new Date();
+        yest.setDate(yest.getDate() - 1);
+        const tomo = new Date();
+        tomo.setDate(tomo.getDate() + 1);
         const iso = date.toISOString().slice(0, 10);
-        if (iso === yesterday.toISOString().slice(0, 10)) return "Yesterday";
-        if (iso === tomorrow.toISOString().slice(0, 10)) return "Tomorrow";
+        if (iso === yest.toISOString().slice(0, 10)) return "Yesterday";
+        if (iso === tomo.toISOString().slice(0, 10)) return "Tomorrow";
         return date.toLocaleDateString(undefined, {
           weekday: "short",
           month: "short",
@@ -1028,8 +978,149 @@
         return datePickerEl.value || todayISO();
       }
 
+      /* SIMPLE CALORIE MODEL */
+
+      // Typical kcal per 100 g for categories (approximate, from common nutrition data).
+      const CATEGORY_PER100 = {
+        fruit: 60,
+        vegetable: 30,
+        lean_protein: 165,
+        fatty_protein: 250,
+        starch: 140, // rice/pasta/potato average
+        bread: 250,
+        snack_sweet: 430,
+        snack_savory: 540,
+        fast_food: 260,
+        cheese: 380,
+        nuts: 600,
+        drink_sugary: 45,
+        drink_zero: 1,
+      };
+
+      // Keyword-based overrides (per 100 g), small on-device “model”.
+      const KEYWORD_MODEL = [
+        { words: ["banana"], per100: 89, basis: "banana (per 100 g)" },
+        { words: ["apple"], per100: 52, basis: "apple (per 100 g)" },
+        { words: ["orange"], per100: 47, basis: "orange (per 100 g)" },
+        { words: ["strawberry", "strawberries"], per100: 33, basis: "strawberry (per 100 g)" },
+        { words: ["grape", "grapes"], per100: 69, basis: "grapes (per 100 g)" },
+
+        { words: ["chicken breast", "grilled chicken"], per100: 165, basis: "grilled chicken breast (per 100 g)" },
+        { words: ["salmon"], per100: 208, basis: "salmon (per 100 g)" },
+        { words: ["beef", "steak"], per100: 250, basis: "beef (per 100 g)" },
+
+        { words: ["rice"], per100: 130, basis: "cooked white rice (per 100 g)" },
+        { words: ["brown rice"], per100: 111, basis: "cooked brown rice (per 100 g)" },
+        { words: ["pasta"], per100: 160, basis: "cooked pasta (per 100 g)" },
+        { words: ["potato", "fries", "fry"], per100: 190, basis: "fried potatoes (per 100 g)" },
+
+        { words: ["bread"], per100: 260, basis: "bread (per 100 g)" },
+        { words: ["pizza"], per100: 270, basis: "pizza (per 100 g)" },
+        { words: ["burger"], per100: 260, basis: "burger (per 100 g)" },
+
+        { words: ["chips", "crisps"], per100: 540, basis: "potato chips (per 100 g)" },
+        { words: ["cookie", "cookies"], per100: 480, basis: "cookies (per 100 g)" },
+        { words: ["chocolate"], per100: 540, basis: "milk chocolate (per 100 g)" },
+
+        { words: ["coke", "cola", "soda"], per100: 40, basis: "sugary soft drink (per 100 g)" },
+        { words: ["juice"], per100: 45, basis: "fruit juice (per 100 g)" },
+        { words: ["coffee", "tea"], per100: 2, basis: "plain coffee/tea (per 100 g)" },
+
+        { words: ["cheese"], per100: 380, basis: "cheese (per 100 g)" },
+        { words: ["peanut", "peanuts", "peanut butter"], per100: 588, basis: "peanuts / peanut butter (per 100 g)" },
+        { words: ["almond", "almonds"], per100: 575, basis: "almonds (per 100 g)" },
+      ];
+
+      function detectCategoryFromText(text) {
+        const t = text.toLowerCase();
+        if (t.match(/banana|apple|orange|strawber|grape/)) return "fruit";
+        if (t.match(/broccoli|carrot|lettuce|salad|spinach|cucumber/)) return "vegetable";
+        if (t.match(/chicken|turkey|tuna|cod/)) return "lean_protein";
+        if (t.match(/salmon|pork belly|bacon/)) return "fatty_protein";
+        if (t.match(/rice|pasta|noodle|potato|mashed/)) return "starch";
+        if (t.match(/bread|bun|bagel|toast/)) return "bread";
+        if (t.match(/cake|cookie|ice cream|brownie|donut|muffin/)) return "snack_sweet";
+        if (t.match(/chips|crisps|nacho|pretzel/)) return "snack_savory";
+        if (t.match(/pizza|burger|fries|kebab|shawarma/)) return "fast_food";
+        if (t.match(/cheese/)) return "cheese";
+        if (t.match(/peanut|almond|walnut|cashew|nut/)) return "nuts";
+        if (t.match(/juice|soda|cola|coke|sprite|fanta|energy drink/)) return "drink_sugary";
+        if (t.match(/diet|zero sugar|zero-cal|zero cal/)) return "drink_zero";
+        return "fast_food"; // fallback generic mixed meal
+      }
+
+      function estimateCalories(name, grams, userCategory) {
+        const text = name.toLowerCase();
+
+        let keywordMatch = null;
+        for (const rule of KEYWORD_MODEL) {
+          if (rule.words.some((w) => text.includes(w))) {
+            keywordMatch = rule;
+            break;
+          }
+        }
+
+        const category =
+          userCategory && userCategory !== "auto"
+            ? userCategory
+            : detectCategoryFromText(text);
+
+        let per100 = null;
+        let basis = "";
+
+        if (keywordMatch) {
+          per100 = keywordMatch.per100;
+          basis = keywordMatch.basis;
+        } else if (CATEGORY_PER100[category] != null) {
+          per100 = CATEGORY_PER100[category];
+          basis = "category: " + category.replace("_", " ");
+        } else {
+          per100 = 220; // very generic mixed-meal fallback
+          basis = "generic mixed meal";
+        }
+
+        const kcal = Math.round((per100 * grams) / 100);
+        return {
+          calories: kcal,
+          per100: per100,
+          category,
+          basis,
+        };
+      }
+
+      /* ENTRIES / STATS */
+
       function getEntriesForDate(dateStr) {
         return data.entries.filter((e) => e.date === dateStr);
+      }
+
+      function addEntry(name, grams, category, est) {
+        const entry = {
+          id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+          date: getSelectedDate(),
+          name: name.trim(),
+          grams,
+          calories: est.calories,
+          category,
+          modelBasis: est.basis + " · " + est.per100 + " kcal / 100 g",
+        };
+        data.entries.push(entry);
+        saveData(data);
+        updateStatsAndUI();
+      }
+
+      function deleteEntry(id) {
+        const idx = data.entries.findIndex((e) => e.id === id);
+        if (idx === -1) return;
+        data.entries.splice(idx, 1);
+        saveData(data);
+        updateStatsAndUI();
+      }
+
+      function clearDay(dateStr) {
+        data.entries = data.entries.filter((e) => e.date !== dateStr);
+        saveData(data);
+        updateStatsAndUI();
       }
 
       function renderEntries(dateStr) {
@@ -1051,43 +1142,73 @@
             const main = document.createElement("div");
             main.className = "entry-main";
 
-            const nameEl = document.createElement("span");
+            const nameEl = document.createElement("div");
             nameEl.className = "entry-name";
-            nameEl.textContent = entry.name || "(No description)";
+            nameEl.textContent = entry.name || "(no description)";
             main.appendChild(nameEl);
 
             const meta = document.createElement("div");
             meta.className = "entry-meta";
 
-            const typeBadge = document.createElement("span");
-            typeBadge.className = "badge badge-type";
-            typeBadge.textContent = entry.type.toUpperCase();
-            meta.appendChild(typeBadge);
+            const gramsBadge = document.createElement("span");
+            gramsBadge.className = "badge-pill";
+            gramsBadge.textContent = entry.grams + " g";
+            meta.appendChild(gramsBadge);
 
-            const idBadge = document.createElement("span");
-            idBadge.className = "badge";
-            idBadge.textContent = "ID " + entry.id.slice(-4);
-            meta.appendChild(idBadge);
+            if (entry.category && entry.category !== "auto") {
+              const catBadge = document.createElement("span");
+              catBadge.className = "badge-pill";
+              catBadge.textContent = entry.category.replace("_", " ");
+              meta.appendChild(catBadge);
+            }
+
+            if (entry.modelBasis) {
+              const basisBadge = document.createElement("span");
+              basisBadge.className = "badge-pill";
+              basisBadge.textContent = entry.modelBasis;
+              meta.appendChild(basisBadge);
+            }
 
             main.appendChild(meta);
 
-            const caloriesEl = document.createElement("div");
-            caloriesEl.className = "entry-calories";
-            caloriesEl.textContent = entry.calories + " kcal";
+            const calEl = document.createElement("div");
+            calEl.className = "entry-calories";
+            calEl.textContent = entry.calories + " kcal";
 
             const actions = document.createElement("div");
             actions.className = "entry-actions";
-            const delBtn = document.createElement("button");
-            delBtn.className = "btn-icon btn-danger";
-            delBtn.type = "button";
-            delBtn.textContent = "Delete";
-            delBtn.addEventListener("click", function () {
+
+            const fineTuneBtn = document.createElement("button");
+            fineTuneBtn.className = "btn-icon";
+            fineTuneBtn.type = "button";
+            fineTuneBtn.textContent = "Adjust";
+            fineTuneBtn.addEventListener("click", function () {
+              const current = entry.calories;
+              const v = prompt(
+                "Adjust calories for this entry:",
+                String(current)
+              );
+              if (v == null) return;
+              const num = Number(v);
+              if (!Number.isFinite(num) || num <= 0) return;
+              entry.calories = Math.round(num);
+              saveData(data);
+              updateStatsAndUI();
+            });
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.className = "btn-icon btn-danger";
+            deleteBtn.type = "button";
+            deleteBtn.textContent = "Delete";
+            deleteBtn.addEventListener("click", function () {
               deleteEntry(entry.id);
             });
-            actions.appendChild(delBtn);
+
+            actions.appendChild(fineTuneBtn);
+            actions.appendChild(deleteBtn);
 
             root.appendChild(main);
-            root.appendChild(caloriesEl);
+            root.appendChild(calEl);
             root.appendChild(actions);
 
             entriesListEl.appendChild(root);
@@ -1099,19 +1220,21 @@
         const entries = getEntriesForDate(dateStr);
         const total = entries.reduce((sum, e) => sum + e.calories, 0);
 
-        statConsumedEl.textContent = total.toString();
+        statConsumedEl.textContent = String(total);
         statConsumedCountEl.textContent =
           entries.length === 1 ? "1 entry" : entries.length + " entries";
 
         if (typeof data.goal === "number" && data.goal > 0) {
           const remaining = Math.max(data.goal - total, 0);
           const balance = data.goal - total;
-          statRemainingEl.textContent = remaining.toString();
+
+          statRemainingEl.textContent = String(remaining);
           statRemainingHintEl.textContent =
             remaining === 0
               ? "Goal reached or exceeded"
               : "You can still consume " + remaining + " kcal";
-          statBalanceEl.textContent = balance.toString();
+
+          statBalanceEl.textContent = String(balance);
           statBalanceHintEl.textContent =
             balance >= 0 ? "Under daily goal" : "Over daily goal";
 
@@ -1129,7 +1252,7 @@
           if (total === 0) {
             progressBadgeEl.textContent = "Start logging meals to see progress.";
           } else if (progress < 70) {
-            progressBadgeEl.textContent = "Plenty of room remaining.";
+            progressBadgeEl.textContent = "Plenty of room left today.";
           } else if (progress <= 100) {
             progressBadgeEl.textContent = "You’re close to your goal.";
           } else {
@@ -1147,7 +1270,7 @@
           }
 
           infoTextEl.innerHTML =
-            'Entries and goals are stored locally. AI calorie estimates are powered by the open <strong>Open Food Facts</strong> nutrition database.';
+            "Goal and entries are cached locally. Calories come from a small, built-in rule-based model; you can fine-tune each entry if needed.";
         } else {
           statRemainingEl.textContent = "0";
           statRemainingHintEl.textContent = "Set a goal to see remaining";
@@ -1163,96 +1286,13 @@
           overGoalAlertEl.style.display = "none";
 
           infoTextEl.innerHTML =
-            'Set a daily goal above. Everything you log stays in this browser using <strong>localStorage</strong>. AI estimates still work without a goal.';
+            "You can log food without a goal. Everything stays in this browser; the model estimates calories automatically from your inputs.";
         }
 
         renderEntries(dateStr);
       }
 
-      function addEntry(name, calories, type, dateStr) {
-        const entry = {
-          id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
-          date: dateStr,
-          name: name.trim(),
-          calories,
-          type,
-        };
-        data.entries.push(entry);
-        saveData(data);
-        updateStatsAndUI();
-      }
-
-      function deleteEntry(id) {
-        const idx = data.entries.findIndex((e) => e.id === id);
-        if (idx === -1) return;
-        data.entries.splice(idx, 1);
-        saveData(data);
-        updateStatsAndUI();
-      }
-
-      function clearDay(dateStr) {
-        data.entries = data.entries.filter((e) => e.date !== dateStr);
-        saveData(data);
-        updateStatsAndUI();
-      }
-
-      async function estimateCaloriesFromOpenFoodFacts(name, grams) {
-        // Uses free, open Open Food Facts search endpoint (no API key needed).
-        const url =
-          "https://world.openfoodfacts.org/cgi/search.pl?" +
-          "search_simple=1&action=process&page_size=1&json=1&" +
-          "search_terms=" +
-          encodeURIComponent(name);
-
-        const res = await fetch(url);
-        if (!res.ok) {
-          throw new Error("HTTP " + res.status);
-        }
-        const json = await res.json();
-        if (!json.products || !json.products.length) {
-          throw new Error("No matching food found.");
-        }
-
-        const product = json.products[0];
-        const nutriments = product.nutriments || {};
-
-        // Typical key for energy in kcal per 100g in OFF. :contentReference[oaicite:1]{index=1}
-        let per100 =
-          nutriments["energy-kcal_100g"] ??
-          nutriments["energy-kcal"] ??
-          null;
-
-        if (per100 == null) {
-          // Sometimes only kJ is set; convert to kcal.
-          const kJ = nutriments["energy_100g"] ?? nutriments["energy-kj_100g"];
-          if (kJ != null) {
-            per100 = Number(kJ) / 4.184;
-          }
-        }
-
-        if (per100 == null || !Number.isFinite(Number(per100))) {
-          throw new Error("Could not read calories for this item.");
-        }
-
-        const kcalPer100 = Number(per100);
-        if (!grams || !Number.isFinite(grams) || grams <= 0) {
-          // If no weight: just return per 100g rounded.
-          return {
-            kcal: Math.round(kcalPer100),
-            sourceName: product.product_name || name,
-            per100: Math.round(kcalPer100),
-            usedGrams: null,
-          };
-        }
-
-        const kcal = (kcalPer100 * grams) / 100;
-        return {
-          kcal: Math.round(kcal),
-          sourceName: product.product_name || name,
-          per100: Math.round(kcalPer100),
-          usedGrams: grams,
-        };
-      }
+      /* INIT / EVENTS */
 
       function init() {
         const today = todayISO();
@@ -1260,7 +1300,7 @@
         datePickerEl.value = today;
 
         if (typeof data.goal === "number" && data.goal > 0) {
-          dailyGoalInput.value = data.goal.toString();
+          dailyGoalInput.value = String(data.goal);
         }
 
         updateStatsAndUI();
@@ -1269,34 +1309,37 @@
       entryForm.addEventListener("submit", function (e) {
         e.preventDefault();
         const name = mealNameInput.value.trim();
-        const calories = Number(mealCaloriesInput.value);
-        const type = mealTypeSelect.value || "meal";
+        const grams = Number(mealGramsInput.value);
+        const category = mealCategorySelect.value || "auto";
         if (!name) {
           mealNameInput.focus();
           return;
         }
-        if (!Number.isFinite(calories) || calories <= 0) {
-          mealCaloriesInput.focus();
+        if (!Number.isFinite(grams) || grams <= 0) {
+          mealGramsInput.focus();
           return;
         }
-        addEntry(name, Math.round(calories), type, getSelectedDate());
+
+        const est = estimateCalories(name, grams, category);
+        addEntry(name, Math.round(grams), est.category, est);
+
         mealNameInput.value = "";
-        mealCaloriesInput.value = "";
         mealGramsInput.value = "";
+        mealCategorySelect.value = "auto";
         mealNameInput.focus();
       });
 
       saveGoalBtn.addEventListener("click", function () {
-        const value = dailyGoalInput.value.trim();
-        if (!value) {
+        const v = dailyGoalInput.value.trim();
+        if (!v) {
           data.goal = null;
         } else {
-          const num = Number(value);
-          if (!Number.isFinite(num) || num <= 0) {
+          const n = Number(v);
+          if (!Number.isFinite(n) || n <= 0) {
             dailyGoalInput.focus();
             return;
           }
-          data.goal = Math.round(num);
+          data.goal = Math.round(n);
         }
         saveData(data);
         updateStatsAndUI();
@@ -1327,7 +1370,7 @@
       resetAllBtn.addEventListener("click", function () {
         if (
           confirm(
-            "This will erase all logged entries and your saved goal from this browser. Continue?"
+            "This will erase all entries and your goal from this browser. Continue?"
           )
         ) {
           localStorage.removeItem(STORAGE_KEY);
@@ -1337,59 +1380,6 @@
           dailyGoalInput.value = "";
           setCurrentDate(todayISO());
           updateStatsAndUI();
-        }
-      });
-
-      aiEstimateBtn.addEventListener("click", async function () {
-        const name = mealNameInput.value.trim();
-        const gramsStr = mealGramsInput.value.trim();
-        const grams = gramsStr ? Number(gramsStr) : null;
-
-        if (!name) {
-          alert("Enter a food name first (e.g. \"banana\").");
-          mealNameInput.focus();
-          return;
-        }
-        if (gramsStr && (!Number.isFinite(grams) || grams <= 0)) {
-          alert("Weight (g) must be a positive number if provided.");
-          mealGramsInput.focus();
-          return;
-        }
-
-        aiEstimateBtn.disabled = true;
-        aiEstimateBtn.textContent = "Estimating…";
-
-        try {
-          const result = await estimateCaloriesFromOpenFoodFacts(name, grams);
-          mealCaloriesInput.value = result.kcal;
-          const labelName = result.sourceName || name;
-          if (result.usedGrams != null) {
-            infoTextEl.innerHTML =
-              'AI estimate: ~<strong>' +
-              result.kcal +
-              " kcal</strong> for " +
-              result.usedGrams +
-              " g of “" +
-              labelName +
-              '” (about ' +
-              result.per100 +
-              " kcal / 100 g) from Open Food Facts.";
-          } else {
-            infoTextEl.innerHTML =
-              'AI estimate: ~<strong>' +
-              result.kcal +
-              " kcal</strong> for 100 g of “" +
-              labelName +
-              '” using Open Food Facts. Add your own weight in grams for a more exact estimate.';
-          }
-        } catch (err) {
-          console.error(err);
-          alert(
-            "Could not estimate calories for this item. Try a simpler name (e.g. \"banana\", \"coke\", \"pepperoni pizza\")."
-          );
-        } finally {
-          aiEstimateBtn.disabled = false;
-          aiEstimateBtn.textContent = "⚡ AI estimate";
         }
       });
 
