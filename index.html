@@ -7,21 +7,25 @@
 
   <style>
     :root {
-      --bg: #020617;
-      --bg-card: #0b1120;
-      --bg-soft: #020617;
-      --border-subtle: #1f2937;
-      --border-strong: #4b5563;
-      --accent: #22c55e;
-      --accent-soft: rgba(34, 197, 94, 0.14);
-      --danger: #ef4444;
-      --danger-soft: rgba(239, 68, 68, 0.16);
-      --text: #e5e7eb;
-      --text-muted: #9ca3af;
+      --bg-page: #f3f4f6;
+      --bg-header: #ffffff;
+      --bg-card: #ffffff;
+      --bg-soft: #f9fafb;
+      --border-subtle: #e5e7eb;
+      --border-strong: #d1d5db;
+      --accent: #16a34a;
+      --accent-soft: rgba(22, 163, 74, 0.12);
+      --accent-strong: rgba(22, 163, 74, 0.35);
+      --danger: #dc2626;
+      --danger-soft: rgba(220, 38, 38, 0.08);
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --text-soft: #9ca3af;
       --radius-lg: 18px;
       --radius-md: 10px;
-      --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.45);
-      --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.3);
+      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --shadow-header: 0 8px 20px rgba(15, 23, 42, 0.06);
+      --shadow-card: 0 10px 30px rgba(15, 23, 42, 0.06);
     }
 
     * {
@@ -33,16 +37,16 @@
       min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 55%, #020617 100%);
-      color: var(--text);
+      background: var(--bg-page);
+      color: var(--text-main);
       display: flex;
       justify-content: center;
-      padding: 18px 14px;
+      padding: 16px;
     }
 
     .app {
       width: 100%;
-      max-width: 1100px;
+      max-width: 960px;
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -51,11 +55,15 @@
     /* HEADER */
 
     header {
+      background: var(--bg-header);
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-header);
+      padding: 12px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
-      padding: 2px 2px 4px;
     }
 
     .header-left {
@@ -68,15 +76,14 @@
     .logo {
       width: 40px;
       height: 40px;
-      border-radius: 16px;
+      border-radius: 12px;
       background: radial-gradient(circle at 0 0, #22c55e, #16a34a 45%, #0ea5e9 100%);
-      box-shadow: 0 12px 24px rgba(34, 197, 94, 0.5);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
       font-size: 0.9rem;
-      color: #022c22;
+      color: #ecfdf3;
       flex-shrink: 0;
     }
 
@@ -89,8 +96,8 @@
 
     .title-block h1 {
       margin: 0;
-      font-size: 1.35rem;
-      letter-spacing: 0.02em;
+      font-size: 1.25rem;
+      letter-spacing: 0.01em;
       display: flex;
       gap: 8px;
       align-items: center;
@@ -99,10 +106,10 @@
 
     .badge {
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      border: 1px solid var(--border-strong);
       padding: 3px 8px;
       font-size: 0.7rem;
-      color: var(--text-muted);
+      color: var(--text-soft);
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
@@ -119,8 +126,8 @@
     .btn {
       border-radius: 999px;
       padding: 7px 14px;
-      border: none;
-      font-size: 0.8rem;
+      border: 1px solid transparent;
+      font-size: 0.82rem;
       font-weight: 500;
       cursor: pointer;
       display: inline-flex;
@@ -128,27 +135,31 @@
       justify-content: center;
       gap: 6px;
       white-space: nowrap;
-      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease,
-        border-color 0.15s ease;
+      transition: background 0.12s ease, border-color 0.12s ease,
+        transform 0.08s ease, box-shadow 0.08s ease, color 0.12s ease;
     }
 
     .btn-muted {
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(75, 85, 99, 0.9);
+      background: #ffffff;
       color: var(--text-muted);
-      box-shadow: none;
+      border-color: var(--border-strong);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    }
+
+    .btn-muted:hover {
+      background: var(--bg-soft);
     }
 
     .btn-muted:active {
-      transform: translateY(1px) scale(0.99);
-      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.9);
+      transform: translateY(1px);
+      box-shadow: none;
     }
 
     /* LAYOUT */
 
     main {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      grid-template-columns: 1.05fr 1.05fr;
       gap: 16px;
       align-items: flex-start;
     }
@@ -158,7 +169,7 @@
       border-radius: var(--radius-lg);
       border: 1px solid var(--border-subtle);
       box-shadow: var(--shadow-card);
-      padding: 16px 16px 14px;
+      padding: 14px 16px 14px;
     }
 
     .card-header {
@@ -172,15 +183,15 @@
     .card-header-main {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
     }
 
     .card-header-main h2 {
       margin: 0;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--text-muted);
+      color: var(--text-soft);
     }
 
     .card-header-main span {
@@ -190,8 +201,8 @@
 
     .chip {
       border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.95);
-      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid var(--border-strong);
+      background: var(--bg-soft);
       padding: 4px 9px;
       display: inline-flex;
       align-items: center;
@@ -212,7 +223,7 @@
 
     .goal-row {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) auto;
+      grid-template-columns: minmax(0, 1.5fr) auto;
       gap: 10px;
       align-items: center;
       margin-bottom: 12px;
@@ -234,12 +245,13 @@
       width: 100%;
       padding: 8px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.95);
-      background: rgba(15, 23, 42, 0.96);
-      color: var(--text);
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      color: var(--text-main);
       font-size: 0.85rem;
       outline: none;
-      transition: border 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+      transition: border-color 0.12s ease, box-shadow 0.12s ease,
+        background 0.12s ease;
     }
 
     .field input:focus,
@@ -260,39 +272,37 @@
 
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), #16a34a);
-      border: 1px solid #16a34a;
-      color: #022c22;
-      box-shadow: 0 10px 22px rgba(34, 197, 94, 0.45);
-      font-size: 0.82rem;
+      border-color: var(--accent);
+      color: #ecfdf3;
+      box-shadow: 0 6px 16px var(--accent-strong);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.03);
     }
 
     .btn-primary:active {
-      transform: translateY(1px) scale(0.99);
-      box-shadow: 0 5px 12px rgba(34, 197, 94, 0.45);
+      transform: translateY(1px);
+      box-shadow: 0 3px 8px var(--accent-strong);
     }
 
     .stats-row {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .stat {
       border-radius: 14px;
-      background: radial-gradient(circle at -10% -20%, var(--accent-soft), #020617);
-      border: 1px solid rgba(31, 41, 55, 0.95);
-      padding: 9px 10px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .stat.secondary {
-      background: #020617;
+      background: var(--bg-soft);
+      border: 1px solid var(--border-subtle);
+      padding: 8px 10px;
     }
 
     .stat-label {
       font-size: 0.7rem;
-      color: var(--text-muted);
+      color: var(--text-soft);
       text-transform: uppercase;
       letter-spacing: 0.12em;
       margin-bottom: 2px;
@@ -320,9 +330,8 @@
 
     .summary-layout {
       display: flex;
-      gap: 14px;
+      gap: 16px;
       align-items: center;
-      margin-top: 6px;
     }
 
     .ring {
@@ -337,7 +346,7 @@
     }
 
     .ring circle {
-      transition: stroke-dashoffset 0.3s ease;
+      transition: stroke-dashoffset 0.25s ease;
     }
 
     .ring-center {
@@ -351,22 +360,23 @@
     }
 
     .ring-percent {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 600;
     }
 
     .ring-label {
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
     }
 
     .ring-chip {
-      font-size: 0.74rem;
+      font-size: 0.73rem;
       border-radius: 999px;
       padding: 2px 8px;
       margin-top: 4px;
-      border: 1px solid rgba(31, 41, 55, 0.95);
-      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      color: var(--text-muted);
     }
 
     .info-stack {
@@ -391,15 +401,15 @@
     }
 
     .alert-info {
-      background: rgba(37, 99, 235, 0.08);
-      border: 1px solid rgba(37, 99, 235, 0.5);
-      color: #bfdbfe;
+      background: #eff6ff;
+      border: 1px solid #dbeafe;
+      color: #1d4ed8;
     }
 
     .alert-danger {
       background: var(--danger-soft);
-      border: 1px solid rgba(248, 113, 113, 0.9);
-      color: #fecaca;
+      border: 1px solid rgba(220, 38, 38, 0.25);
+      color: #b91c1c;
     }
 
     .legend-row {
@@ -424,17 +434,17 @@
     }
 
     .swatch-consumed {
-      background: radial-gradient(circle at top left, #22c55e, #16a34a);
+      background: #16a34a;
     }
 
     .swatch-remaining {
-      background: radial-gradient(circle at top left, #38bdf8, #0ea5e9);
+      background: #0ea5e9;
     }
 
     .footer-note {
       font-size: 0.72rem;
-      color: var(--text-muted);
-      margin-top: 6px;
+      color: var(--text-soft);
+      margin-top: 8px;
       text-align: right;
     }
 
@@ -457,12 +467,18 @@
 
     .date-picker input[type="date"] {
       border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.95);
+      border: 1px solid var(--border-subtle);
       padding: 5px 8px;
-      background: rgba(15, 23, 42, 0.96);
-      color: var(--text);
+      background: #ffffff;
+      color: var(--text-main);
       font-size: 0.8rem;
       outline: none;
+      transition: border-color 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .date-picker input[type="date"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
     }
 
     .text-muted {
@@ -476,13 +492,13 @@
 
     .form-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) 1.1fr 0.9fr auto;
+      grid-template-columns: minmax(0, 1.5fr) 0.9fr 0.9fr auto;
       gap: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .divider {
-      border-top: 1px dashed rgba(55, 65, 81, 0.9);
+      border-top: 1px dashed var(--border-subtle);
       margin: 8px 0;
     }
 
@@ -495,14 +511,14 @@
 
     .entry {
       display: grid;
-      grid-template-columns: minmax(0, 1.7fr) 0.9fr auto;
+      grid-template-columns: minmax(0, 1.7fr) 0.8fr auto;
       gap: 6px;
       align-items: center;
       padding: 7px 9px;
       margin-bottom: 6px;
-      border-radius: 14px;
-      background: rgba(15, 23, 42, 0.98);
-      border: 1px solid rgba(30, 64, 175, 0.55);
+      border-radius: 12px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border-subtle);
     }
 
     .entry-main {
@@ -522,7 +538,7 @@
 
     .entry-meta {
       font-size: 0.72rem;
-      color: var(--text-muted);
+      color: var(--text-soft);
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
@@ -531,13 +547,14 @@
     .badge-pill {
       border-radius: 999px;
       padding: 1px 7px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
       font-size: 0.7rem;
-      color: var(--text-muted);
+      color: var(--text-soft);
     }
 
     .entry-calories {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 600;
       text-align: right;
     }
@@ -551,25 +568,40 @@
     .btn-icon {
       border-radius: 999px;
       padding: 4px 7px;
-      border: 1px solid rgba(75, 85, 99, 0.95);
-      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
       color: var(--text-muted);
       font-size: 0.7rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 4px;
+      transition: background 0.12s ease, border-color 0.12s ease,
+        transform 0.08s ease, box-shadow 0.08s ease;
+    }
+
+    .btn-icon:hover {
+      background: var(--bg-soft);
+    }
+
+    .btn-icon:active {
+      transform: translateY(1px);
+      box-shadow: none;
     }
 
     .btn-danger {
-      background: var(--danger-soft);
-      border-color: rgba(248, 113, 113, 0.9);
-      color: #fecaca;
+      background: #fef2f2;
+      border-color: rgba(220, 38, 38, 0.35);
+      color: #b91c1c;
+    }
+
+    .btn-danger:hover {
+      background: #fee2e2;
     }
 
     .empty {
       font-size: 0.8rem;
-      color: var(--text-muted);
+      color: var(--text-soft);
       text-align: center;
       padding: 18px 8px 4px;
     }
@@ -579,7 +611,7 @@
     }
 
     .entries-list::-webkit-scrollbar-thumb {
-      background: rgba(75, 85, 99, 0.85);
+      background: #d1d5db;
       border-radius: 999px;
     }
 
@@ -589,15 +621,14 @@
       main {
         grid-template-columns: minmax(0, 1fr);
       }
-      .ring {
-        width: 110px;
-        height: 110px;
+      .summary-layout {
+        align-items: flex-start;
       }
     }
 
     @media (max-width: 640px) {
       body {
-        padding: 12px 10px;
+        padding: 12px;
       }
 
       header {
@@ -606,16 +637,17 @@
       }
 
       .title-block h1 {
-        font-size: 1.18rem;
+        font-size: 1.1rem;
       }
 
       .card {
-        padding: 13px 12px 11px;
+        padding: 12px 12px 12px;
       }
 
       .summary-layout {
         flex-direction: column;
         align-items: stretch;
+        gap: 12px;
       }
 
       .ring {
@@ -627,7 +659,7 @@
       }
 
       .form-grid {
-        grid-template-columns: minmax(0, 1.2fr) 1.1fr;
+        grid-template-columns: minmax(0, 1.4fr) 0.9fr;
         grid-template-rows: auto auto;
       }
 
@@ -646,7 +678,7 @@
       }
 
       .entry {
-        grid-template-columns: minmax(0, 1.5fr) 0.9fr;
+        grid-template-columns: minmax(0, 1.6fr) 0.8fr;
         grid-template-rows: auto auto;
       }
 
@@ -667,7 +699,7 @@
             Calorie Tracker
             <span class="badge">Local cache · Built-in model</span>
           </h1>
-          <p>Type food + grams · calories are estimated automatically.</p>
+          <p>Type food + grams; calories are estimated automatically.</p>
         </div>
       </div>
       <button id="resetAllBtn" class="btn btn-muted" type="button">
@@ -708,7 +740,7 @@
             </div>
             <div class="stat-sub" id="statConsumedCount">0 entries</div>
           </div>
-          <div class="stat secondary">
+          <div class="stat">
             <div class="stat-label">Remaining</div>
             <div class="stat-value">
               <span id="statRemaining">0</span>
@@ -716,7 +748,7 @@
             </div>
             <div class="stat-sub" id="statRemainingHint">Set a goal to see remaining</div>
           </div>
-          <div class="stat secondary">
+          <div class="stat">
             <div class="stat-label">Balance</div>
             <div class="stat-value">
               <span id="statBalance">0</span>
@@ -731,16 +763,15 @@
             <svg width="120" height="120">
               <defs>
                 <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#22c55e" />
-                  <stop offset="50%" stop-color="#16a34a" />
-                  <stop offset="100%" stop-color="#38bdf8" />
+                  <stop offset="0%" stop-color="#16a34a" />
+                  <stop offset="100%" stop-color="#0ea5e9" />
                 </linearGradient>
               </defs>
               <circle
                 cx="60"
                 cy="60"
                 r="48"
-                stroke="rgba(31,41,55,0.9)"
+                stroke="#e5e7eb"
                 stroke-width="8"
                 fill="none"
               ></circle>
@@ -768,7 +799,7 @@
             <div class="alert alert-info">
               <div class="alert-icon">ℹ</div>
               <p id="infoText">
-                Everything (goal and entries) is stored in <strong>localStorage</strong>.
+                Goal and entries are cached in <strong>localStorage</strong>.
                 Calories are estimated on-device by a small rule-based model.
               </p>
             </div>
@@ -904,8 +935,6 @@
 
       const data = loadData();
 
-      /* DOM ELEMENTS */
-
       const dailyGoalInput = document.getElementById("dailyGoal");
       const saveGoalBtn = document.getElementById("saveGoalBtn");
       const resetAllBtn = document.getElementById("resetAllBtn");
@@ -940,8 +969,6 @@
 
       const circleRadius = 48;
       const circleCircumference = 2 * Math.PI * circleRadius;
-
-      /* DATES */
 
       function todayISO() {
         const d = new Date();
@@ -978,15 +1005,12 @@
         return datePickerEl.value || todayISO();
       }
 
-      /* SIMPLE CALORIE MODEL */
-
-      // Typical kcal per 100 g for categories (approximate, from common nutrition data).
       const CATEGORY_PER100 = {
         fruit: 60,
         vegetable: 30,
         lean_protein: 165,
         fatty_protein: 250,
-        starch: 140, // rice/pasta/potato average
+        starch: 140,
         bread: 250,
         snack_sweet: 430,
         snack_savory: 540,
@@ -997,7 +1021,6 @@
         drink_zero: 1,
       };
 
-      // Keyword-based overrides (per 100 g), small on-device “model”.
       const KEYWORD_MODEL = [
         { words: ["banana"], per100: 89, basis: "banana (per 100 g)" },
         { words: ["apple"], per100: 52, basis: "apple (per 100 g)" },
@@ -1046,7 +1069,7 @@
         if (t.match(/peanut|almond|walnut|cashew|nut/)) return "nuts";
         if (t.match(/juice|soda|cola|coke|sprite|fanta|energy drink/)) return "drink_sugary";
         if (t.match(/diet|zero sugar|zero-cal|zero cal/)) return "drink_zero";
-        return "fast_food"; // fallback generic mixed meal
+        return "fast_food";
       }
 
       function estimateCalories(name, grams, userCategory) {
@@ -1075,7 +1098,7 @@
           per100 = CATEGORY_PER100[category];
           basis = "category: " + category.replace("_", " ");
         } else {
-          per100 = 220; // very generic mixed-meal fallback
+          per100 = 220;
           basis = "generic mixed meal";
         }
 
@@ -1087,8 +1110,6 @@
           basis,
         };
       }
-
-      /* ENTRIES / STATS */
 
       function getEntriesForDate(dateStr) {
         return data.entries.filter((e) => e.date === dateStr);
@@ -1291,8 +1312,6 @@
 
         renderEntries(dateStr);
       }
-
-      /* INIT / EVENTS */
 
       function init() {
         const today = todayISO();
