@@ -7,21 +7,24 @@
 
   <style>
     :root {
-      --bg: #0f172a;
-      --bg-card: #020617;
+      --bg: #020617;
+      --bg-elevated: #0b1120;
+      --bg-soft: #020617;
+      --border-subtle: #1f2937;
+      --border-strong: #4b5563;
       --accent: #22c55e;
-      --accent-soft: rgba(34, 197, 94, 0.12);
+      --accent-soft: rgba(34, 197, 94, 0.14);
       --accent-strong: rgba(34, 197, 94, 0.4);
+      --accent-alt: #38bdf8;
+      --danger: #ef4444;
+      --danger-soft: rgba(239, 68, 68, 0.16);
       --text: #e5e7eb;
       --text-muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --danger-soft: rgba(239, 68, 68, 0.12);
-      --radius-lg: 18px;
-      --radius-md: 12px;
+      --radius-xl: 20px;
+      --radius-lg: 16px;
+      --radius-md: 10px;
       --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
       --shadow-sm: 0 10px 25px rgba(0, 0, 0, 0.3);
-      --input-bg: #020617;
     }
 
     * {
@@ -30,19 +33,20 @@
 
     body {
       margin: 0;
+      min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1e293b 0, #020617 42%, #020617 100%);
+      background:
+        radial-gradient(circle at top, #1f2937 0, #020617 46%, #020617 100%);
       color: var(--text);
-      min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 16px;
+      padding: 18px 14px;
     }
 
     .app-shell {
       width: 100%;
-      max-width: 1120px;
+      max-width: 1080px;
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -56,83 +60,106 @@
       padding: 4px 2px;
     }
 
-    .app-title {
+    .header-main {
       display: flex;
-      flex-direction: column;
-      gap: 4px;
+      align-items: center;
+      gap: 10px;
     }
 
-    .app-title h1 {
+    .logo-pill {
+      width: 36px;
+      height: 36px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 10% 0, #22c55e, #38bdf8);
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.5),
+        0 14px 30px rgba(34, 197, 94, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #022c22;
+    }
+
+    .header-text h1 {
       margin: 0;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       letter-spacing: 0.03em;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .pill {
+    .header-text p {
+      margin: 4px 0 0;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .tag {
       font-size: 0.65rem;
       padding: 3px 8px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      border: 1px solid rgba(148, 163, 184, 0.6);
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .app-title span {
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      letter-spacing: 0.08em;
     }
 
     main {
       display: grid;
-      grid-template-columns: 1.1fr 1.1fr;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
       gap: 16px;
       align-items: flex-start;
     }
 
     .card {
       background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), #020617);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(51, 65, 85, 0.8);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(51, 65, 85, 0.9);
       box-shadow: var(--shadow-soft);
-      padding: 14px 14px 12px;
-      backdrop-filter: blur(16px);
+      padding: 14px 16px 13px;
+      backdrop-filter: blur(18px);
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 10px;
       margin-bottom: 10px;
-      gap: 8px;
     }
 
-    .card-header h2 {
+    .card-title {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .card-title h2 {
       margin: 0;
       font-size: 0.95rem;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--text-muted);
     }
 
-    .card-header small {
-      font-size: 0.75rem;
+    .card-title span {
+      font-size: 0.8rem;
       color: var(--text-muted);
     }
 
     .chip {
-      padding: 2px 8px;
+      padding: 4px 9px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(55, 65, 81, 0.8);
-      font-size: 0.7rem;
-      color: var(--text-muted);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.96);
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      white-space: nowrap;
     }
 
     .chip-dot {
@@ -142,61 +169,136 @@
       background: radial-gradient(circle, var(--accent) 0, #166534 55%, transparent 60%);
     }
 
+    .chip-label {
+      font-weight: 500;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 7px 14px;
+      border: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease,
+        border-color 0.15s ease;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at top, var(--accent), #16a34a);
+      color: #022c22;
+      box-shadow: 0 12px 25px var(--accent-strong);
+      border: 1px solid rgba(22, 163, 74, 0.9);
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px) scale(0.99);
+      box-shadow: 0 5px 12px rgba(34, 197, 94, 0.45);
+    }
+
+    .btn-muted {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      box-shadow: none;
+    }
+
+    .btn-muted:active {
+      transform: translateY(1px) scale(0.99);
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-icon {
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-size: 0.72rem;
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-danger {
+      background: var(--danger-soft);
+      border-color: rgba(248, 113, 113, 0.78);
+      color: #fecaca;
+    }
+
+    .btn-danger:active {
+      transform: translateY(1px) scale(0.99);
+      box-shadow: 0 4px 10px rgba(248, 113, 113, 0.35);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: rgba(75, 85, 99, 0.8);
+      color: var(--text-muted);
+    }
+
     .stats-row {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
-    .stat-tile {
-      background: radial-gradient(circle at top left, var(--accent-soft), #020617);
-      border-radius: 14px;
+    .stat-card {
+      background:
+        radial-gradient(circle at 0 -40%, var(--accent-soft), #020617 55%, #020617 100%);
+      border-radius: var(--radius-lg);
       border: 1px solid rgba(30, 64, 175, 0.65);
       padding: 8px 10px;
+      box-shadow: var(--shadow-sm);
       position: relative;
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
     }
 
-    .stat-tile.secondary {
-      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.08), #020617);
-      border-color: rgba(51, 65, 85, 0.9);
+    .stat-card.secondary {
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.12), #020617);
+      border-color: rgba(55, 65, 81, 0.95);
     }
 
     .stat-label {
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       color: var(--text-muted);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .stat-value {
       font-size: 1.25rem;
       font-weight: 600;
-      display: inline-flex;
+      display: flex;
       align-items: baseline;
       gap: 4px;
     }
 
-    .stat-value span.unit {
-      font-size: 0.75rem;
+    .stat-unit {
+      font-size: 0.78rem;
       color: var(--text-muted);
       text-transform: uppercase;
     }
 
     .stat-sub {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
       margin-top: 2px;
     }
 
-    .goal-input-row {
+    .goal-row {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) auto;
+      grid-template-columns: minmax(0, 1.5fr) auto;
       gap: 10px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       align-items: center;
     }
 
@@ -207,17 +309,17 @@
     }
 
     .field label {
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       color: var(--text-muted);
     }
 
     .field input,
     .field select {
       width: 100%;
-      padding: 7px 9px;
+      padding: 8px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: var(--input-bg);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: rgba(15, 23, 42, 0.95);
       color: var(--text);
       font-size: 0.85rem;
       outline: none;
@@ -240,195 +342,18 @@
       -moz-appearance: textfield;
     }
 
-    .btn {
-      border-radius: 999px;
-      padding: 8px 14px;
-      border: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      white-space: nowrap;
-      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
-    }
-
-    .btn-primary {
-      background: radial-gradient(circle at top, var(--accent), #16a34a);
-      color: #022c22;
-      box-shadow: 0 12px 25px var(--accent-strong);
-    }
-
-    .btn-primary:active {
-      transform: translateY(1px) scale(0.99);
-      box-shadow: 0 5px 12px rgba(34, 197, 94, 0.45);
-    }
-
-    .btn-muted {
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-muted);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      box-shadow: none;
-    }
-
-    .btn-muted:active {
-      transform: translateY(1px) scale(0.99);
-      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.9);
-    }
-
-    .btn-icon {
-      border-radius: 999px;
-      padding: 5px 8px;
-      font-size: 0.7rem;
-      border: 1px solid rgba(51, 65, 85, 0.9);
-      background: rgba(15, 23, 42, 0.95);
-      color: var(--text-muted);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .btn-danger {
-      background: var(--danger-soft);
-      color: #fecaca;
-      border-color: rgba(239, 68, 68, 0.7);
-    }
-
-    .btn-danger:hover {
-      background: rgba(248, 113, 113, 0.18);
-    }
-
-    .date-row {
+    .summary-layout {
       display: flex;
+      gap: 14px;
       align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .date-picker {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .date-picker input[type="date"] {
-      border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 5px 8px;
-      background: var(--input-bg);
-      color: var(--text);
-      font-size: 0.8rem;
-      outline: none;
-    }
-
-    .entries-list {
-      max-height: 360px;
-      overflow-y: auto;
-      padding-right: 4px;
-      margin: 0 -6px 0 0;
-    }
-
-    .entry {
-      display: grid;
-      grid-template-columns: minmax(0, 1.7fr) 0.9fr auto;
-      gap: 6px;
-      align-items: center;
-      padding: 7px 8px;
-      margin-bottom: 5px;
-      border-radius: 12px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(30, 64, 175, 0.4);
-    }
-
-    .entry-main {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      min-width: 0;
-    }
-
-    .entry-name {
-      font-size: 0.85rem;
-      font-weight: 500;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .entry-meta {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .entry-calories {
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-align: right;
-    }
-
-    .entry-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 4px;
-    }
-
-    .badge {
-      border-radius: 999px;
-      padding: 1px 7px;
-      font-size: 0.65rem;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      color: var(--text-muted);
-    }
-
-    .badge-type {
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .legend-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-      justify-content: flex-end;
-    }
-
-    .legend-item {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .legend-swatch {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-    }
-
-    .swatch-consumed {
-      background: radial-gradient(circle at top left, #22c55e, #16a34a);
-    }
-
-    .swatch-remaining {
-      background: radial-gradient(circle at top left, #38bdf8, #0284c7);
+      margin-top: 6px;
     }
 
     .progress-ring {
-      position: relative;
       width: 120px;
       height: 120px;
       flex-shrink: 0;
+      position: relative;
     }
 
     .progress-ring svg {
@@ -449,83 +374,234 @@
       pointer-events: none;
     }
 
-    .progress-main {
+    .progress-percent {
       font-size: 1.1rem;
       font-weight: 600;
     }
 
-    .progress-sub {
+    .progress-label {
       font-size: 0.75rem;
       color: var(--text-muted);
     }
 
-    .progress-badge {
-      font-size: 0.7rem;
+    .progress-chip {
+      font-size: 0.72rem;
       border-radius: 999px;
       padding: 2px 8px;
       margin-top: 4px;
       border: 1px solid rgba(31, 41, 55, 0.9);
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .info-stack {
+      flex: 1;
+      font-size: 0.8rem;
     }
 
     .alert {
-      font-size: 0.75rem;
       border-radius: 12px;
       padding: 6px 8px;
-      margin-top: 6px;
+      margin-bottom: 6px;
       display: flex;
       align-items: flex-start;
       gap: 6px;
-    }
-
-    .alert-info {
-      background: rgba(37, 99, 235, 0.08);
-      border: 1px solid rgba(37, 99, 235, 0.3);
-      color: #bfdbfe;
-    }
-
-    .alert-danger {
-      background: var(--danger-soft);
-      border: 1px solid rgba(248, 113, 113, 0.7);
-      color: #fecaca;
+      font-size: 0.78rem;
     }
 
     .alert-icon {
       font-size: 0.9rem;
       line-height: 1;
+      margin-top: 1px;
+    }
+
+    .alert-info {
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.45);
+      color: #bfdbfe;
+    }
+
+    .alert-danger {
+      background: var(--danger-soft);
+      border: 1px solid rgba(248, 113, 113, 0.85);
+      color: #fecaca;
     }
 
     .alert p {
       margin: 0;
     }
 
+    .legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-start;
+      margin-top: 4px;
+    }
+
+    .legend-item {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+    }
+
+    .swatch-consumed {
+      background: radial-gradient(circle at top left, #22c55e, #16a34a);
+    }
+
+    .swatch-remaining {
+      background: radial-gradient(circle at top left, #38bdf8, #0ea5e9);
+    }
+
+    .footer-note {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      text-align: right;
+    }
+
+    /* Right side / log */
+    .date-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .date-picker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .date-picker input[type="date"] {
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      padding: 5px 8px;
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text);
+      font-size: 0.8rem;
+      outline: none;
+    }
+
+    .subtle-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    form {
+      margin-top: 8px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) 0.9fr 0.9fr auto;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .ai-helper-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) auto;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .ai-hint {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .divider {
+      border-top: 1px dashed rgba(55, 65, 81, 0.9);
+      margin: 8px 0 8px;
+    }
+
+    .entries-list {
+      max-height: 360px;
+      overflow-y: auto;
+      margin-right: -4px;
+      padding-right: 4px;
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) 0.9fr auto;
+      gap: 6px;
+      align-items: center;
+      padding: 7px 9px;
+      margin-bottom: 6px;
+      border-radius: var(--radius-lg);
+      background: rgba(15, 23, 42, 0.97);
+      border: 1px solid rgba(30, 64, 175, 0.54);
+    }
+
+    .entry-main {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .entry-name {
+      font-size: 0.86rem;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .entry-meta {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      border-radius: 999px;
+      padding: 1px 7px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .badge-type {
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .entry-calories {
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .entry-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 4px;
+    }
+
     .empty-state {
       font-size: 0.8rem;
       color: var(--text-muted);
       text-align: center;
-      padding: 16px 12px 6px;
+      padding: 16px 8px 4px;
     }
 
-    .form-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1.6fr) 0.9fr 0.9fr auto;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .divider {
-      border-top: 1px dashed rgba(51, 65, 85, 0.9);
-      margin: 8px 0;
-    }
-
-    .footer-note {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      text-align: right;
-      padding: 0 4px 2px;
-    }
-
-    /* Scrollbar (webkit) */
     .entries-list::-webkit-scrollbar {
       width: 4px;
     }
@@ -535,33 +611,28 @@
     }
 
     .entries-list::-webkit-scrollbar-thumb {
-      background: rgba(75, 85, 99, 0.8);
+      background: rgba(75, 85, 99, 0.85);
       border-radius: 999px;
     }
 
-    /* Responsiveness */
     @media (max-width: 900px) {
       main {
-        grid-template-columns: 1.1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .progress-ring {
-        width: 100px;
-        height: 100px;
+        width: 110px;
+        height: 110px;
       }
 
       .stats-row {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
 
     @media (max-width: 640px) {
       body {
-        padding: 10px;
-      }
-
-      .card {
-        padding: 12px 11px 10px;
+        padding: 12px 10px;
       }
 
       header {
@@ -569,32 +640,56 @@
         align-items: flex-start;
       }
 
-      .app-title h1 {
-        font-size: 1.15rem;
+      .header-main {
+        width: 100%;
       }
 
-      main {
-        gap: 12px;
+      .header-text h1 {
+        font-size: 1.16rem;
       }
 
-      .form-row {
-        grid-template-columns: minmax(0, 1.6fr) 0.9fr;
+      .card {
+        padding: 12px 12px 11px;
+      }
+
+      .summary-layout {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .progress-ring {
+        margin: 0 auto;
+      }
+
+      .stats-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .form-grid {
+        grid-template-columns: minmax(0, 1.5fr) 0.9fr;
         grid-template-rows: auto auto;
-        grid-auto-flow: dense;
       }
 
-      .form-row .field:nth-child(3) {
+      .form-grid .field:nth-child(3) {
         grid-column: 1 / 2;
       }
 
-      .form-row .btn-primary {
+      .form-grid .btn-primary {
         grid-column: 2 / 3;
         grid-row: 2 / 3;
         justify-self: stretch;
       }
 
+      .ai-helper-row {
+        grid-template-columns: minmax(0, 1.3fr);
+      }
+
+      .entries-list {
+        max-height: 280px;
+      }
+
       .entry {
-        grid-template-columns: minmax(0, 1.7fr) 0.9fr;
+        grid-template-columns: minmax(0, 1.6fr) 0.9fr;
         grid-template-rows: auto auto;
       }
 
@@ -602,103 +697,93 @@
         grid-column: 1 / -1;
         justify-content: flex-start;
       }
-
-      .stats-row {
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
-      }
-    }
-
-    @media (min-width: 1200px) {
-      .app-shell {
-        padding-top: 6px;
-      }
     }
   </style>
 </head>
 <body>
   <div class="app-shell">
     <header>
-      <div class="app-title">
-        <h1>
-          Calorie Tracker
-          <span class="pill">Offline · Local Storage</span>
-        </h1>
-        <span>Quickly log meals and see your daily intake across phone, tablet, and desktop.</span>
+      <div class="header-main">
+        <div class="logo-pill">CT</div>
+        <div class="header-text">
+          <h1>
+            Calorie Tracker
+            <span class="tag">Local cache · Open data AI</span>
+          </h1>
+          <p>Track your day and auto-estimate calories from food name + weight.</p>
+        </div>
       </div>
       <button id="resetAllBtn" class="btn btn-muted" type="button">
-        <span>Reset all data</span>
+        Reset everything
       </button>
     </header>
 
     <main>
-      <!-- Left: summary & goal -->
+      <!-- LEFT: Overview -->
       <section class="card">
         <div class="card-header">
-          <h2>Today · Overview</h2>
+          <div class="card-title">
+            <h2>Today overview</h2>
+            <span id="currentDateLabel"></span>
+          </div>
           <div class="chip">
             <span class="chip-dot"></span>
-            <span id="currentDateLabel"></span>
+            <span class="chip-label">Synced to this browser</span>
           </div>
         </div>
 
-        <div class="goal-input-row">
+        <div class="goal-row">
           <div class="field">
             <label for="dailyGoal">Daily calorie goal</label>
-            <input
-              id="dailyGoal"
-              type="number"
-              min="0"
-              inputmode="numeric"
-              placeholder="e.g. 2200"
-            />
+            <input id="dailyGoal" type="number" min="0" placeholder="e.g. 2200" />
           </div>
           <button id="saveGoalBtn" class="btn btn-primary" type="button">
-            <span>Save goal</span>
+            Save goal
           </button>
         </div>
 
         <div class="stats-row">
-          <div class="stat-tile">
+          <div class="stat-card">
             <div class="stat-label">Consumed</div>
             <div class="stat-value">
               <span id="statConsumed">0</span>
-              <span class="unit">kcal</span>
+              <span class="stat-unit">kcal</span>
             </div>
             <div class="stat-sub" id="statConsumedCount">0 entries</div>
           </div>
-          <div class="stat-tile secondary">
+          <div class="stat-card secondary">
             <div class="stat-label">Remaining</div>
             <div class="stat-value">
               <span id="statRemaining">0</span>
-              <span class="unit">kcal</span>
+              <span class="stat-unit">kcal</span>
             </div>
             <div class="stat-sub" id="statRemainingHint">Set a goal to see remaining</div>
           </div>
-          <div class="stat-tile secondary">
+          <div class="stat-card secondary">
             <div class="stat-label">Balance</div>
             <div class="stat-value">
               <span id="statBalance">0</span>
-              <span class="unit">kcal</span>
+              <span class="stat-unit">kcal</span>
             </div>
             <div class="stat-sub" id="statBalanceHint">Goal − Consumed</div>
           </div>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 12px; margin-top: 6px;">
+        <div class="summary-layout">
           <div class="progress-ring">
             <svg width="120" height="120">
               <defs>
                 <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stop-color="#22c55e" />
                   <stop offset="50%" stop-color="#16a34a" />
-                  <stop offset="100%" stop-color="#0ea5e9" />
+                  <stop offset="100%" stop-color="#38bdf8" />
                 </linearGradient>
               </defs>
               <circle
                 cx="60"
                 cy="60"
                 r="48"
-                stroke="rgba(30,64,175,0.65)"
+                stroke="rgba(31,41,55,0.9)"
                 stroke-width="8"
                 fill="none"
               ></circle>
@@ -716,22 +801,21 @@
               ></circle>
             </svg>
             <div class="progress-center">
-              <div class="progress-main" id="progressPercent">0%</div>
-              <div class="progress-sub" id="progressLabel">of daily goal</div>
-              <div class="progress-badge" id="progressBadge">Set a goal to begin</div>
+              <div class="progress-percent" id="progressPercent">0%</div>
+              <div class="progress-label" id="progressLabel">of daily goal</div>
+              <div class="progress-chip" id="progressBadge">Set a goal to begin</div>
             </div>
           </div>
 
-          <div style="flex: 1; font-size: 0.8rem;">
+          <div class="info-stack">
             <div class="alert alert-info">
               <div class="alert-icon">ℹ</div>
               <p id="infoText">
-                Your entries and goal are stored locally in this browser using
-                <strong>localStorage</strong>.
+                Entries and goals are stored in <strong>localStorage</strong>. Calorie
+                estimates use the free, open Open Food Facts database (no signup).
               </p>
             </div>
-
-            <div id="overGoalAlert" class="alert alert-danger" style="display: none;">
+            <div id="overGoalAlert" class="alert alert-danger" style="display:none;">
               <div class="alert-icon">!</div>
               <p id="overGoalText"></p>
             </div>
@@ -750,29 +834,32 @@
         </div>
 
         <div class="footer-note">
-          Tip: You can change the date on the right to review previous days.
+          Switch the date on the right to review or edit previous days.
         </div>
       </section>
 
-      <!-- Right: log & list -->
+      <!-- RIGHT: Log & AI helper -->
       <section class="card">
         <div class="card-header">
-          <h2>Log entries</h2>
+          <div class="card-title">
+            <h2>Log entries</h2>
+            <span class="subtle-label">Meals, snacks, drinks for a single day.</span>
+          </div>
           <div class="date-row">
             <div class="date-picker">
               <span>Day</span>
               <input id="datePicker" type="date" />
             </div>
             <button id="clearDayBtn" class="btn-icon btn-danger" type="button">
-              <span>Clear day</span>
+              Clear day
             </button>
           </div>
         </div>
 
         <form id="entryForm" autocomplete="off">
-          <div class="form-row">
+          <div class="form-grid">
             <div class="field">
-              <label for="mealName">Meal / snack</label>
+              <label for="mealName">Food / meal</label>
               <input
                 id="mealName"
                 type="text"
@@ -781,13 +868,13 @@
               />
             </div>
             <div class="field">
-              <label for="mealCalories">Calories</label>
+              <label for="mealCalories">Calories (kcal)</label>
               <input
                 id="mealCalories"
                 type="number"
                 min="0"
                 inputmode="numeric"
-                placeholder="kcal"
+                placeholder="e.g. 450"
                 required
               />
             </div>
@@ -800,7 +887,27 @@
               </select>
             </div>
             <button class="btn btn-primary" type="submit">
-              <span>+ Add</span>
+              + Add
+            </button>
+          </div>
+
+          <div class="ai-helper-row">
+            <div class="field">
+              <label for="mealGrams">Weight (g) for AI estimate (optional)</label>
+              <input
+                id="mealGrams"
+                type="number"
+                min="0"
+                inputmode="numeric"
+                placeholder="e.g. 120 for a banana"
+              />
+              <div class="ai-hint">
+                AI will look up a similar food in Open Food Facts and estimate kcal
+                for your weight.
+              </div>
+            </div>
+            <button id="aiEstimateBtn" class="btn btn-ghost" type="button">
+              ⚡ AI estimate
             </button>
           </div>
         </form>
@@ -809,7 +916,7 @@
 
         <div id="entriesList" class="entries-list"></div>
         <div id="emptyState" class="empty-state">
-          No entries for this day yet. Add your first meal above.
+          No entries for this day yet. Add your first one above.
         </div>
       </section>
     </main>
@@ -817,34 +924,28 @@
 
   <script>
     (function () {
-      const STORAGE_KEY = "calorieTrackerData_v1";
+      const STORAGE_KEY = "calorieTrackerData_v2"; // new key so old broken data won't clash
 
       function loadData() {
         try {
           const raw = localStorage.getItem(STORAGE_KEY);
-          if (!raw) {
-            return { goal: null, entries: [] };
-          }
+          if (!raw) return { goal: null, entries: [] };
           const parsed = JSON.parse(raw);
-          if (
-            typeof parsed !== "object" ||
-            !("entries" in parsed) ||
-            !Array.isArray(parsed.entries)
-          ) {
-            return { goal: null, entries: [] };
-          }
+          if (!parsed || typeof parsed !== "object") return { goal: null, entries: [] };
           return {
             goal: typeof parsed.goal === "number" ? parsed.goal : null,
-            entries: parsed.entries.map((e) => ({
-              id: e.id || String(Math.random()),
-              date: e.date,
-              name: e.name,
-              calories: Number(e.calories) || 0,
-              type: e.type || "meal",
-            })),
+            entries: Array.isArray(parsed.entries)
+              ? parsed.entries.map((e) => ({
+                  id: e.id || String(Math.random()),
+                  date: e.date,
+                  name: e.name,
+                  calories: Number(e.calories) || 0,
+                  type: e.type || "meal",
+                }))
+              : [],
           };
-        } catch (e) {
-          console.warn("Failed to parse stored data, resetting.", e);
+        } catch (err) {
+          console.warn("Failed to parse stored data, resetting.", err);
           return { goal: null, entries: [] };
         }
       }
@@ -883,6 +984,8 @@
       const mealNameInput = document.getElementById("mealName");
       const mealCaloriesInput = document.getElementById("mealCalories");
       const mealTypeSelect = document.getElementById("mealType");
+      const mealGramsInput = document.getElementById("mealGrams");
+      const aiEstimateBtn = document.getElementById("aiEstimateBtn");
 
       const entriesListEl = document.getElementById("entriesList");
       const emptyStateEl = document.getElementById("emptyState");
@@ -890,31 +993,30 @@
       const circleRadius = 48;
       const circleCircumference = 2 * Math.PI * circleRadius;
 
-      function formatDateLabel(dateStr) {
-        const date = new Date(dateStr + "T00:00");
-        const todayStr = todayISO();
-        if (dateStr === todayStr) return "Today";
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        const dateIso = date.toISOString().slice(0, 10);
-        if (dateIso === yesterday.toISOString().slice(0, 10)) return "Yesterday";
-        if (dateIso === tomorrow.toISOString().slice(0, 10)) return "Tomorrow";
-
-        return date.toLocaleDateString(undefined, {
-          weekday: "short",
-          month: "short",
-          day: "numeric",
-        });
-      }
-
       function todayISO() {
         const d = new Date();
         const year = d.getFullYear();
         const month = String(d.getMonth() + 1).padStart(2, "0");
         const day = String(d.getDate()).padStart(2, "0");
         return year + "-" + month + "-" + day;
+      }
+
+      function formatDateLabel(dateStr) {
+        const date = new Date(dateStr + "T00:00");
+        const todayStr = todayISO();
+        if (dateStr === todayStr) return "Today";
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const iso = date.toISOString().slice(0, 10);
+        if (iso === yesterday.toISOString().slice(0, 10)) return "Yesterday";
+        if (iso === tomorrow.toISOString().slice(0, 10)) return "Tomorrow";
+        return date.toLocaleDateString(undefined, {
+          weekday: "short",
+          month: "short",
+          day: "numeric",
+        });
       }
 
       function setCurrentDate(dateStr) {
@@ -930,89 +1032,6 @@
         return data.entries.filter((e) => e.date === dateStr);
       }
 
-      function updateStatsAndUI() {
-        const dateStr = getSelectedDate();
-        const entries = getEntriesForDate(dateStr);
-        const totalCalories = entries.reduce((sum, e) => sum + e.calories, 0);
-
-        statConsumedEl.textContent = totalCalories.toString();
-        statConsumedCountEl.textContent =
-          entries.length === 1 ? "1 entry" : entries.length + " entries";
-
-        if (typeof data.goal === "number" && data.goal > 0) {
-          const remaining = Math.max(data.goal - totalCalories, 0);
-          const balance = data.goal - totalCalories;
-          statRemainingEl.textContent = remaining.toString();
-          statRemainingHintEl.textContent =
-            remaining === 0
-              ? "Goal reached or exceeded"
-              : "You can still consume " + remaining + " kcal";
-          statBalanceEl.textContent = balance.toString();
-          statBalanceHintEl.textContent =
-            balance >= 0 ? "Under daily goal" : "Over daily goal";
-
-          const progress =
-            totalCalories <= 0
-              ? 0
-              : Math.min((totalCalories / data.goal) * 100, 200);
-          const percentText = Math.round(
-            Math.min((totalCalories / data.goal) * 100, 999)
-          );
-          const offset =
-            circleCircumference * (1 - Math.min(progress / 100, 1));
-          progressCircleEl.style.strokeDasharray = circleCircumference.toFixed(
-            2
-          );
-          progressCircleEl.style.strokeDashoffset = offset.toFixed(2);
-
-          progressPercentEl.textContent = percentText + "%";
-          progressLabelEl.textContent = "of " + data.goal + " kcal goal";
-
-          if (totalCalories === 0) {
-            progressBadgeEl.textContent = "Start logging meals to see progress.";
-          } else if (progress < 70) {
-            progressBadgeEl.textContent = "Plenty of room remaining.";
-          } else if (progress <= 100) {
-            progressBadgeEl.textContent = "You're close to your daily goal.";
-          } else {
-            progressBadgeEl.textContent = "You've gone past today's goal.";
-          }
-
-          if (balance < 0) {
-            overGoalTextEl.textContent =
-              "You are " +
-              Math.abs(balance) +
-              " kcal over your daily goal for this day.";
-            overGoalAlertEl.style.display = "flex";
-          } else {
-            overGoalAlertEl.style.display = "none";
-          }
-
-          infoTextEl.innerHTML =
-            'Your entries and goal are stored locally in this browser using <strong>localStorage</strong>.';
-        } else {
-          statRemainingEl.textContent = "0";
-          statRemainingHintEl.textContent = "Set a goal to see remaining";
-          statBalanceEl.textContent = "0";
-          statBalanceHintEl.textContent = "Goal − Consumed";
-
-          progressCircleEl.style.strokeDasharray = circleCircumference.toFixed(
-            2
-          );
-          progressCircleEl.style.strokeDashoffset =
-            circleCircumference.toFixed(2);
-          progressPercentEl.textContent = "0%";
-          progressLabelEl.textContent = "of daily goal";
-          progressBadgeEl.textContent = "Set a goal to begin";
-          overGoalAlertEl.style.display = "none";
-
-          infoTextEl.innerHTML =
-            'Set a daily goal above. Everything stays in this browser using <strong>localStorage</strong>.';
-        }
-
-        renderEntries(dateStr);
-      }
-
       function renderEntries(dateStr) {
         const entries = getEntriesForDate(dateStr);
         entriesListEl.innerHTML = "";
@@ -1026,16 +1045,16 @@
           .slice()
           .sort((a, b) => a.id.localeCompare(b.id))
           .forEach((entry) => {
-            const div = document.createElement("div");
-            div.className = "entry";
+            const root = document.createElement("div");
+            root.className = "entry";
 
             const main = document.createElement("div");
             main.className = "entry-main";
 
-            const nameSpan = document.createElement("span");
-            nameSpan.className = "entry-name";
-            nameSpan.textContent = entry.name || "(No description)";
-            main.appendChild(nameSpan);
+            const nameEl = document.createElement("span");
+            nameEl.className = "entry-name";
+            nameEl.textContent = entry.name || "(No description)";
+            main.appendChild(nameEl);
 
             const meta = document.createElement("div");
             meta.className = "entry-meta";
@@ -1052,29 +1071,102 @@
 
             main.appendChild(meta);
 
-            const calSpan = document.createElement("div");
-            calSpan.className = "entry-calories";
-            calSpan.textContent = entry.calories + " kcal";
+            const caloriesEl = document.createElement("div");
+            caloriesEl.className = "entry-calories";
+            caloriesEl.textContent = entry.calories + " kcal";
 
             const actions = document.createElement("div");
             actions.className = "entry-actions";
-
-            const deleteBtn = document.createElement("button");
-            deleteBtn.className = "btn-icon btn-danger";
-            deleteBtn.type = "button";
-            deleteBtn.textContent = "Delete";
-            deleteBtn.addEventListener("click", function () {
+            const delBtn = document.createElement("button");
+            delBtn.className = "btn-icon btn-danger";
+            delBtn.type = "button";
+            delBtn.textContent = "Delete";
+            delBtn.addEventListener("click", function () {
               deleteEntry(entry.id);
             });
+            actions.appendChild(delBtn);
 
-            actions.appendChild(deleteBtn);
+            root.appendChild(main);
+            root.appendChild(caloriesEl);
+            root.appendChild(actions);
 
-            div.appendChild(main);
-            div.appendChild(calSpan);
-            div.appendChild(actions);
-
-            entriesListEl.appendChild(div);
+            entriesListEl.appendChild(root);
           });
+      }
+
+      function updateStatsAndUI() {
+        const dateStr = getSelectedDate();
+        const entries = getEntriesForDate(dateStr);
+        const total = entries.reduce((sum, e) => sum + e.calories, 0);
+
+        statConsumedEl.textContent = total.toString();
+        statConsumedCountEl.textContent =
+          entries.length === 1 ? "1 entry" : entries.length + " entries";
+
+        if (typeof data.goal === "number" && data.goal > 0) {
+          const remaining = Math.max(data.goal - total, 0);
+          const balance = data.goal - total;
+          statRemainingEl.textContent = remaining.toString();
+          statRemainingHintEl.textContent =
+            remaining === 0
+              ? "Goal reached or exceeded"
+              : "You can still consume " + remaining + " kcal";
+          statBalanceEl.textContent = balance.toString();
+          statBalanceHintEl.textContent =
+            balance >= 0 ? "Under daily goal" : "Over daily goal";
+
+          const progress = total <= 0 ? 0 : Math.min((total / data.goal) * 100, 200);
+          const percentText = Math.round(
+            Math.min((total / data.goal) * 100, 999)
+          );
+          const offset =
+            circleCircumference * (1 - Math.min(progress / 100, 1));
+          progressCircleEl.style.strokeDasharray = circleCircumference.toFixed(2);
+          progressCircleEl.style.strokeDashoffset = offset.toFixed(2);
+          progressPercentEl.textContent = percentText + "%";
+          progressLabelEl.textContent = "of " + data.goal + " kcal goal";
+
+          if (total === 0) {
+            progressBadgeEl.textContent = "Start logging meals to see progress.";
+          } else if (progress < 70) {
+            progressBadgeEl.textContent = "Plenty of room remaining.";
+          } else if (progress <= 100) {
+            progressBadgeEl.textContent = "You’re close to your goal.";
+          } else {
+            progressBadgeEl.textContent = "You’re above today’s goal.";
+          }
+
+          if (balance < 0) {
+            overGoalTextEl.textContent =
+              "You are " +
+              Math.abs(balance) +
+              " kcal over your daily goal for this day.";
+            overGoalAlertEl.style.display = "flex";
+          } else {
+            overGoalAlertEl.style.display = "none";
+          }
+
+          infoTextEl.innerHTML =
+            'Entries and goals are stored locally. AI calorie estimates are powered by the open <strong>Open Food Facts</strong> nutrition database.';
+        } else {
+          statRemainingEl.textContent = "0";
+          statRemainingHintEl.textContent = "Set a goal to see remaining";
+          statBalanceEl.textContent = "0";
+          statBalanceHintEl.textContent = "Goal − Consumed";
+
+          progressCircleEl.style.strokeDasharray = circleCircumference.toFixed(2);
+          progressCircleEl.style.strokeDashoffset =
+            circleCircumference.toFixed(2);
+          progressPercentEl.textContent = "0%";
+          progressLabelEl.textContent = "of daily goal";
+          progressBadgeEl.textContent = "Set a goal to begin";
+          overGoalAlertEl.style.display = "none";
+
+          infoTextEl.innerHTML =
+            'Set a daily goal above. Everything you log stays in this browser using <strong>localStorage</strong>. AI estimates still work without a goal.';
+        }
+
+        renderEntries(dateStr);
       }
 
       function addEntry(name, calories, type, dateStr) {
@@ -1082,8 +1174,8 @@
           id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
           date: dateStr,
           name: name.trim(),
-          calories: calories,
-          type: type,
+          calories,
+          type,
         };
         data.entries.push(entry);
         saveData(data);
@@ -1099,36 +1191,78 @@
       }
 
       function clearDay(dateStr) {
-        const remaining = data.entries.filter((e) => e.date !== dateStr);
-        data.entries = remaining;
+        data.entries = data.entries.filter((e) => e.date !== dateStr);
         saveData(data);
         updateStatsAndUI();
       }
 
-      function init() {
-        const today = todayISO();
+      async function estimateCaloriesFromOpenFoodFacts(name, grams) {
+        // Uses free, open Open Food Facts search endpoint (no API key needed).
+        const url =
+          "https://world.openfoodfacts.org/cgi/search.pl?" +
+          "search_simple=1&action=process&page_size=1&json=1&" +
+          "search_terms=" +
+          encodeURIComponent(name);
 
-        if (!data.entries.some((e) => e.date === today)) {
-          const now = new Date();
-          const hours = now.getHours();
-          if (hours > 5 && hours < 11) {
-            data.entries.push({
-              id: "sample-" + Date.now().toString(36),
-              date: today,
-              name: "Sample breakfast",
-              calories: 300,
-              type: "meal",
-            });
-            saveData(data);
+        const res = await fetch(url);
+        if (!res.ok) {
+          throw new Error("HTTP " + res.status);
+        }
+        const json = await res.json();
+        if (!json.products || !json.products.length) {
+          throw new Error("No matching food found.");
+        }
+
+        const product = json.products[0];
+        const nutriments = product.nutriments || {};
+
+        // Typical key for energy in kcal per 100g in OFF. :contentReference[oaicite:1]{index=1}
+        let per100 =
+          nutriments["energy-kcal_100g"] ??
+          nutriments["energy-kcal"] ??
+          null;
+
+        if (per100 == null) {
+          // Sometimes only kJ is set; convert to kcal.
+          const kJ = nutriments["energy_100g"] ?? nutriments["energy-kj_100g"];
+          if (kJ != null) {
+            per100 = Number(kJ) / 4.184;
           }
         }
+
+        if (per100 == null || !Number.isFinite(Number(per100))) {
+          throw new Error("Could not read calories for this item.");
+        }
+
+        const kcalPer100 = Number(per100);
+        if (!grams || !Number.isFinite(grams) || grams <= 0) {
+          // If no weight: just return per 100g rounded.
+          return {
+            kcal: Math.round(kcalPer100),
+            sourceName: product.product_name || name,
+            per100: Math.round(kcalPer100),
+            usedGrams: null,
+          };
+        }
+
+        const kcal = (kcalPer100 * grams) / 100;
+        return {
+          kcal: Math.round(kcal),
+          sourceName: product.product_name || name,
+          per100: Math.round(kcalPer100),
+          usedGrams: grams,
+        };
+      }
+
+      function init() {
+        const today = todayISO();
+        setCurrentDate(today);
+        datePickerEl.value = today;
 
         if (typeof data.goal === "number" && data.goal > 0) {
           dailyGoalInput.value = data.goal.toString();
         }
 
-        setCurrentDate(today);
-        datePickerEl.value = today;
         updateStatsAndUI();
       }
 
@@ -1137,13 +1271,18 @@
         const name = mealNameInput.value.trim();
         const calories = Number(mealCaloriesInput.value);
         const type = mealTypeSelect.value || "meal";
-        if (!name || !Number.isFinite(calories) || calories <= 0) {
+        if (!name) {
+          mealNameInput.focus();
+          return;
+        }
+        if (!Number.isFinite(calories) || calories <= 0) {
           mealCaloriesInput.focus();
           return;
         }
-        addEntry(name, calories, type, getSelectedDate());
+        addEntry(name, Math.round(calories), type, getSelectedDate());
         mealNameInput.value = "";
         mealCaloriesInput.value = "";
+        mealGramsInput.value = "";
         mealNameInput.focus();
       });
 
@@ -1164,11 +1303,10 @@
       });
 
       datePickerEl.addEventListener("change", function () {
-        const dateStr = getSelectedDate();
         if (!datePickerEl.value) {
-          datePickerEl.value = dateStr;
+          datePickerEl.value = todayISO();
         }
-        currentDateLabelEl.textContent = formatDateLabel(dateStr);
+        currentDateLabelEl.textContent = formatDateLabel(getSelectedDate());
         updateStatsAndUI();
       });
 
@@ -1199,6 +1337,59 @@
           dailyGoalInput.value = "";
           setCurrentDate(todayISO());
           updateStatsAndUI();
+        }
+      });
+
+      aiEstimateBtn.addEventListener("click", async function () {
+        const name = mealNameInput.value.trim();
+        const gramsStr = mealGramsInput.value.trim();
+        const grams = gramsStr ? Number(gramsStr) : null;
+
+        if (!name) {
+          alert("Enter a food name first (e.g. \"banana\").");
+          mealNameInput.focus();
+          return;
+        }
+        if (gramsStr && (!Number.isFinite(grams) || grams <= 0)) {
+          alert("Weight (g) must be a positive number if provided.");
+          mealGramsInput.focus();
+          return;
+        }
+
+        aiEstimateBtn.disabled = true;
+        aiEstimateBtn.textContent = "Estimating…";
+
+        try {
+          const result = await estimateCaloriesFromOpenFoodFacts(name, grams);
+          mealCaloriesInput.value = result.kcal;
+          const labelName = result.sourceName || name;
+          if (result.usedGrams != null) {
+            infoTextEl.innerHTML =
+              'AI estimate: ~<strong>' +
+              result.kcal +
+              " kcal</strong> for " +
+              result.usedGrams +
+              " g of “" +
+              labelName +
+              '” (about ' +
+              result.per100 +
+              " kcal / 100 g) from Open Food Facts.";
+          } else {
+            infoTextEl.innerHTML =
+              'AI estimate: ~<strong>' +
+              result.kcal +
+              " kcal</strong> for 100 g of “" +
+              labelName +
+              '” using Open Food Facts. Add your own weight in grams for a more exact estimate.';
+          }
+        } catch (err) {
+          console.error(err);
+          alert(
+            "Could not estimate calories for this item. Try a simpler name (e.g. \"banana\", \"coke\", \"pepperoni pizza\")."
+          );
+        } finally {
+          aiEstimateBtn.disabled = false;
+          aiEstimateBtn.textContent = "⚡ AI estimate";
         }
       });
 
