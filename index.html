@@ -155,6 +155,185 @@
       box-shadow: none;
     }
 
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #16a34a);
+      border-color: var(--accent);
+      color: #ecfdf3;
+      box-shadow: 0 6px 16px var(--accent-strong);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.03);
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+      box-shadow: 0 3px 8px var(--accent-strong);
+    }
+
+    .btn-icon {
+      border-radius: 999px;
+      padding: 4px 7px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.12s ease, border-color 0.12s ease,
+        transform 0.08s ease, box-shadow 0.08s ease;
+    }
+
+    .btn-icon:hover {
+      background: var(--bg-soft);
+    }
+
+    .btn-icon:active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+
+    .btn-danger {
+      background: #fef2f2;
+      border-color: rgba(220, 38, 38, 0.35);
+      color: #b91c1c;
+    }
+
+    .btn-danger:hover {
+      background: #fee2e2;
+    }
+
+    /* ACCOUNT CARD */
+
+    .account-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      padding: 12px 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .account-section-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .account-status {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .account-status strong {
+      color: var(--text-main);
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-soft);
+      color: var(--text-muted);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #f97316;
+    }
+
+    .status-dot.ok {
+      background: #16a34a;
+    }
+
+    .auth-forms {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    .auth-form {
+      border-radius: 12px;
+      background: var(--bg-soft);
+      border: 1px dashed var(--border-subtle);
+      padding: 8px 10px 10px;
+    }
+
+    .auth-form h3 {
+      margin: 0 0 4px;
+      font-size: 0.86rem;
+    }
+
+    .auth-note {
+      font-size: 0.72rem;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .auth-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 6px;
+    }
+
+    .auth-row label {
+      font-size: 0.76rem;
+      color: var(--text-soft);
+    }
+
+    .auth-row input {
+      width: 100%;
+      padding: 6px 8px;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      font-size: 0.8rem;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .auth-row input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+
+    .auth-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+      align-items: center;
+    }
+
+    .auth-message {
+      font-size: 0.74rem;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+
+    .auth-message.error {
+      color: #b91c1c;
+    }
+
+    .auth-message.ok {
+      color: #166534;
+    }
+
     /* LAYOUT */
 
     main {
@@ -268,22 +447,6 @@
 
     .field input[type="number"] {
       -moz-appearance: textfield;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #16a34a);
-      border-color: var(--accent);
-      color: #ecfdf3;
-      box-shadow: 0 6px 16px var(--accent-strong);
-    }
-
-    .btn-primary:hover {
-      filter: brightness(1.03);
-    }
-
-    .btn-primary:active {
-      transform: translateY(1px);
-      box-shadow: 0 3px 8px var(--accent-strong);
     }
 
     .stats-row {
@@ -565,40 +728,6 @@
       gap: 4px;
     }
 
-    .btn-icon {
-      border-radius: 999px;
-      padding: 4px 7px;
-      border: 1px solid var(--border-subtle);
-      background: #ffffff;
-      color: var(--text-muted);
-      font-size: 0.7rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: background 0.12s ease, border-color 0.12s ease,
-        transform 0.08s ease, box-shadow 0.08s ease;
-    }
-
-    .btn-icon:hover {
-      background: var(--bg-soft);
-    }
-
-    .btn-icon:active {
-      transform: translateY(1px);
-      box-shadow: none;
-    }
-
-    .btn-danger {
-      background: #fef2f2;
-      border-color: rgba(220, 38, 38, 0.35);
-      color: #b91c1c;
-    }
-
-    .btn-danger:hover {
-      background: #fee2e2;
-    }
-
     .empty {
       font-size: 0.8rem;
       color: var(--text-soft);
@@ -615,12 +744,35 @@
       border-radius: 999px;
     }
 
+    .disabled-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(243, 244, 246, 0.7);
+      border-radius: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 8px;
+    }
+
+    .relative {
+      position: relative;
+    }
+
     /* RESPONSIVE */
 
     @media (max-width: 900px) {
+      .account-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
       main {
         grid-template-columns: minmax(0, 1fr);
       }
+
       .summary-layout {
         align-items: flex-start;
       }
@@ -640,7 +792,8 @@
         font-size: 1.1rem;
       }
 
-      .card {
+      .card,
+      .account-card {
         padding: 12px 12px 12px;
       }
 
@@ -656,6 +809,10 @@
 
       .stats-row {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .auth-forms {
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .form-grid {
@@ -697,19 +854,73 @@
         <div class="title-block">
           <h1>
             Calorie Tracker
-            <span class="badge">Local cache · Built-in model</span>
+            <span class="badge">Firebase · Email sign-in</span>
           </h1>
-          <p>Type food + grams; calories are estimated automatically.</p>
+          <p>Sign in, then log food; calories are estimated on-device.</p>
         </div>
       </div>
       <button id="resetAllBtn" class="btn btn-muted" type="button">
-        Reset all data
+        Reset my account data
       </button>
     </header>
 
+    <!-- ACCOUNT / AUTH -->
+    <section class="account-card">
+      <div>
+        <div class="account-section-title">Account</div>
+        <div class="account-status" id="accountStatus">
+          Not signed in.
+        </div>
+        <div class="status-pill" id="verifyPill" style="display:none;">
+          <span class="status-dot" id="verifyDot"></span>
+          <span id="verifyLabel"></span>
+        </div>
+        <div class="auth-message" id="globalAuthMessage"></div>
+        <div class="auth-actions" id="signedInActions" style="margin-top:8px; display:none;">
+          <button id="signOutBtn" class="btn btn-muted" type="button">Sign out</button>
+        </div>
+      </div>
+
+      <div class="auth-forms" id="authForms">
+        <div class="auth-form" id="signUpFormWrapper">
+          <h3>Create account</h3>
+          <p class="auth-note">Email + password. A verification link is sent to confirm your email.</p>
+          <div class="auth-row">
+            <label for="signUpEmail">Email</label>
+            <input id="signUpEmail" type="email" autocomplete="email" />
+          </div>
+          <div class="auth-row">
+            <label for="signUpPassword">Password (min 6 characters)</label>
+            <input id="signUpPassword" type="password" autocomplete="new-password" />
+          </div>
+          <div class="auth-actions">
+            <button id="signUpBtn" class="btn btn-primary" type="button">Sign up</button>
+          </div>
+          <div class="auth-message" id="signUpMessage"></div>
+        </div>
+
+        <div class="auth-form" id="signInFormWrapper">
+          <h3>Sign in</h3>
+          <p class="auth-note">Use the same email + password you registered with.</p>
+          <div class="auth-row">
+            <label for="signInEmail">Email</label>
+            <input id="signInEmail" type="email" autocomplete="email" />
+          </div>
+          <div class="auth-row">
+            <label for="signInPassword">Password</label>
+            <input id="signInPassword" type="password" autocomplete="current-password" />
+          </div>
+          <div class="auth-actions">
+            <button id="signInBtn" class="btn btn-muted" type="button">Sign in</button>
+          </div>
+          <div class="auth-message" id="signInMessage"></div>
+        </div>
+      </div>
+    </section>
+
     <main>
       <!-- LEFT: SUMMARY -->
-      <section class="card">
+      <section class="card relative" id="summaryCard">
         <div class="card-header">
           <div class="card-header-main">
             <h2>Today summary</h2>
@@ -717,7 +928,7 @@
           </div>
           <div class="chip">
             <span class="chip-dot"></span>
-            <span>Stored only in this browser</span>
+            <span>Stored per user in Firestore</span>
           </div>
         </div>
 
@@ -791,7 +1002,7 @@
             <div class="ring-center">
               <div class="ring-percent" id="progressPercent">0%</div>
               <div class="ring-label" id="progressLabel">of daily goal</div>
-              <div class="ring-chip" id="progressBadge">Set a goal to begin</div>
+              <div class="ring-chip" id="progressBadge">Sign in and set a goal</div>
             </div>
           </div>
 
@@ -799,8 +1010,9 @@
             <div class="alert alert-info">
               <div class="alert-icon">ℹ</div>
               <p id="infoText">
-                Goal and entries are cached in <strong>localStorage</strong>.
-                Calories are estimated on-device by a small rule-based model.
+                After you sign in, your daily goal and entries for each date are stored
+                in your Firestore user document. Calories are estimated on-device by a
+                small rule-based model.
               </p>
             </div>
             <div id="overGoalAlert" class="alert alert-danger" style="display:none;">
@@ -823,10 +1035,13 @@
         <div class="footer-note">
           Change the date on the right to review or edit previous days.
         </div>
+        <div class="disabled-overlay" id="summaryDisabledOverlay" style="display:flex;">
+          Sign in to start tracking and saving your data.
+        </div>
       </section>
 
       <!-- RIGHT: LOG -->
-      <section class="card">
+      <section class="card relative" id="logCard">
         <div class="card-header">
           <div class="card-header-main">
             <h2>Log meals</h2>
@@ -896,514 +1111,678 @@
         <div id="emptyState" class="empty">
           No entries for this day yet. Add your first one above.
         </div>
+
+        <div class="disabled-overlay" id="logDisabledOverlay" style="display:flex;">
+          Sign in to create entries linked to your account.
+        </div>
       </section>
     </main>
   </div>
 
-  <script>
-    (function () {
-      const STORAGE_KEY = "calorieTrackerData_v3";
+  <script type="module">
+    // Firebase SDK imports via CDN (modular v11 API)
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      onAuthStateChanged,
+      sendEmailVerification,
+      signOut,
+    } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+    import {
+      getFirestore,
+      doc,
+      getDoc,
+      setDoc,
+      deleteDoc,
+    } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
 
-      function loadData() {
-        try {
-          const raw = localStorage.getItem(STORAGE_KEY);
-          if (!raw) return { goal: null, entries: [] };
-          const parsed = JSON.parse(raw);
-          if (!parsed || typeof parsed !== "object") return { goal: null, entries: [] };
-          return {
-            goal: typeof parsed.goal === "number" ? parsed.goal : null,
-            entries: Array.isArray(parsed.entries)
-              ? parsed.entries.map((e) => ({
-                  id: e.id || String(Math.random()),
-                  date: e.date,
-                  name: e.name,
-                  grams: Number(e.grams) || 0,
-                  calories: Number(e.calories) || 0,
-                  category: e.category || "auto",
-                  modelBasis: e.modelBasis || null,
-                }))
-              : [],
-          };
-        } catch {
-          return { goal: null, entries: [] };
+    // Your Firebase configuration (safe to expose in client; security is via rules)
+    const firebaseConfig = {
+      apiKey: "AIzaSyAhlSU9QQD9etz_lI9XPT0JDyx5NV6UUxg",
+      authDomain: "callog-caltracker.firebaseapp.com",
+      projectId: "callog-caltracker",
+      storageBucket: "callog-caltracker.firebasestorage.app",
+      messagingSenderId: "284680250030",
+      appId: "1:284680250030:web:afb8694dfae211bd33c33f",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // DOM refs (auth)
+    const accountStatusEl = document.getElementById("accountStatus");
+    const verifyPillEl = document.getElementById("verifyPill");
+    const verifyDotEl = document.getElementById("verifyDot");
+    const verifyLabelEl = document.getElementById("verifyLabel");
+    const globalAuthMessageEl = document.getElementById("globalAuthMessage");
+    const signedInActionsEl = document.getElementById("signedInActions");
+    const signOutBtn = document.getElementById("signOutBtn");
+
+    const signUpEmailEl = document.getElementById("signUpEmail");
+    const signUpPasswordEl = document.getElementById("signUpPassword");
+    const signUpBtn = document.getElementById("signUpBtn");
+    const signUpMessageEl = document.getElementById("signUpMessage");
+
+    const signInEmailEl = document.getElementById("signInEmail");
+    const signInPasswordEl = document.getElementById("signInPassword");
+    const signInBtn = document.getElementById("signInBtn");
+    const signInMessageEl = document.getElementById("signInMessage");
+
+    const authFormsEl = document.getElementById("authForms");
+
+    // DOM refs (tracker)
+    const dailyGoalInput = document.getElementById("dailyGoal");
+    const saveGoalBtn = document.getElementById("saveGoalBtn");
+    const resetAllBtn = document.getElementById("resetAllBtn");
+
+    const statConsumedEl = document.getElementById("statConsumed");
+    const statConsumedCountEl = document.getElementById("statConsumedCount");
+    const statRemainingEl = document.getElementById("statRemaining");
+    const statRemainingHintEl = document.getElementById("statRemainingHint");
+    const statBalanceEl = document.getElementById("statBalance");
+    const statBalanceHintEl = document.getElementById("statBalanceHint");
+
+    const progressCircleEl = document.getElementById("progressCircle");
+    const progressPercentEl = document.getElementById("progressPercent");
+    const progressLabelEl = document.getElementById("progressLabel");
+    const progressBadgeEl = document.getElementById("progressBadge");
+
+    const infoTextEl = document.getElementById("infoText");
+    const overGoalAlertEl = document.getElementById("overGoalAlert");
+    const overGoalTextEl = document.getElementById("overGoalText");
+
+    const currentDateLabelEl = document.getElementById("currentDateLabel");
+    const datePickerEl = document.getElementById("datePicker");
+    const clearDayBtn = document.getElementById("clearDayBtn");
+
+    const entryForm = document.getElementById("entryForm");
+    const mealNameInput = document.getElementById("mealName");
+    const mealGramsInput = document.getElementById("mealGrams");
+    const mealCategorySelect = document.getElementById("mealCategory");
+
+    const entriesListEl = document.getElementById("entriesList");
+    const emptyStateEl = document.getElementById("emptyState");
+
+    const summaryDisabledOverlayEl = document.getElementById("summaryDisabledOverlay");
+    const logDisabledOverlayEl = document.getElementById("logDisabledOverlay");
+
+    const circleRadius = 48;
+    const circleCircumference = 2 * Math.PI * circleRadius;
+
+    let currentUser = null;
+    let currentDate = null;
+    let currentDayData = { goal: null, entries: [] }; // kept in memory and synced to Firestore
+
+    function todayISO() {
+      const d = new Date();
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, "0");
+      const day = String(d.getDate()).padStart(2, "0");
+      return `${y}-${m}-${day}`;
+    }
+
+    function formatDateLabel(dateStr) {
+      const date = new Date(dateStr + "T00:00");
+      const todayStr = todayISO();
+      if (dateStr === todayStr) return "Today";
+      const yest = new Date();
+      yest.setDate(yest.getDate() - 1);
+      const tomo = new Date();
+      tomo.setDate(tomo.getDate() + 1);
+      const iso = date.toISOString().slice(0, 10);
+      if (iso === yest.toISOString().slice(0, 10)) return "Yesterday";
+      if (iso === tomo.toISOString().slice(0, 10)) return "Tomorrow";
+      return date.toLocaleDateString(undefined, {
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+      });
+    }
+
+    function setCurrentDate(dateStr) {
+      currentDate = dateStr;
+      datePickerEl.value = dateStr;
+      currentDateLabelEl.textContent = formatDateLabel(dateStr);
+    }
+
+    function getDayDocRef(uid, dateStr) {
+      return doc(db, "users", uid, "days", dateStr);
+    }
+
+    function updateAuthUI(user) {
+      if (!user) {
+        accountStatusEl.textContent = "Not signed in.";
+        verifyPillEl.style.display = "none";
+        globalAuthMessageEl.textContent = "";
+        signedInActionsEl.style.display = "none";
+        authFormsEl.style.display = "grid";
+        summaryDisabledOverlayEl.style.display = "flex";
+        logDisabledOverlayEl.style.display = "flex";
+        return;
+      }
+
+      const email = user.email || "(no email)";
+      const verified = !!user.emailVerified;
+      accountStatusEl.innerHTML = `Signed in as <strong>${email}</strong>`;
+      verifyPillEl.style.display = "inline-flex";
+      verifyDotEl.classList.toggle("ok", verified);
+      verifyLabelEl.textContent = verified
+        ? "Email verified"
+        : "Verification email sent. Check your inbox.";
+      globalAuthMessageEl.textContent = "";
+      signedInActionsEl.style.display = "flex";
+      authFormsEl.style.display = "none";
+      summaryDisabledOverlayEl.style.display = "none";
+      logDisabledOverlayEl.style.display = "none";
+    }
+
+    function showAuthMessage(el, msg, type) {
+      el.textContent = msg || "";
+      el.classList.remove("error", "ok");
+      if (type === "error") el.classList.add("error");
+      if (type === "ok") el.classList.add("ok");
+    }
+
+    // Simple email format check before Firebase
+    function isValidEmailFormat(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    // --------- SIMPLE CALORIE MODEL (same as before) ---------
+
+    const CATEGORY_PER100 = {
+      fruit: 60,
+      vegetable: 30,
+      lean_protein: 165,
+      fatty_protein: 250,
+      starch: 140,
+      bread: 250,
+      snack_sweet: 430,
+      snack_savory: 540,
+      fast_food: 260,
+      cheese: 380,
+      nuts: 600,
+      drink_sugary: 45,
+      drink_zero: 1,
+    };
+
+    const KEYWORD_MODEL = [
+      { words: ["banana"], per100: 89, basis: "banana (per 100 g)" },
+      { words: ["apple"], per100: 52, basis: "apple (per 100 g)" },
+      { words: ["orange"], per100: 47, basis: "orange (per 100 g)" },
+      { words: ["strawberry", "strawberries"], per100: 33, basis: "strawberry (per 100 g)" },
+      { words: ["grape", "grapes"], per100: 69, basis: "grapes (per 100 g)" },
+
+      { words: ["chicken breast", "grilled chicken"], per100: 165, basis: "grilled chicken breast (per 100 g)" },
+      { words: ["salmon"], per100: 208, basis: "salmon (per 100 g)" },
+      { words: ["beef", "steak"], per100: 250, basis: "beef (per 100 g)" },
+
+      { words: ["rice"], per100: 130, basis: "cooked white rice (per 100 g)" },
+      { words: ["brown rice"], per100: 111, basis: "cooked brown rice (per 100 g)" },
+      { words: ["pasta"], per100: 160, basis: "cooked pasta (per 100 g)" },
+      { words: ["potato", "fries", "fry"], per100: 190, basis: "fried potatoes (per 100 g)" },
+
+      { words: ["bread"], per100: 260, basis: "bread (per 100 g)" },
+      { words: ["pizza"], per100: 270, basis: "pizza (per 100 g)" },
+      { words: ["burger"], per100: 260, basis: "burger (per 100 g)" },
+
+      { words: ["chips", "crisps"], per100: 540, basis: "potato chips (per 100 g)" },
+      { words: ["cookie", "cookies"], per100: 480, basis: "cookies (per 100 g)" },
+      { words: ["chocolate"], per100: 540, basis: "milk chocolate (per 100 g)" },
+
+      { words: ["coke", "cola", "soda"], per100: 40, basis: "sugary soft drink (per 100 g)" },
+      { words: ["juice"], per100: 45, basis: "fruit juice (per 100 g)" },
+      { words: ["coffee", "tea"], per100: 2, basis: "plain coffee/tea (per 100 g)" },
+
+      { words: ["cheese"], per100: 380, basis: "cheese (per 100 g)" },
+      { words: ["peanut", "peanuts", "peanut butter"], per100: 588, basis: "peanuts / peanut butter (per 100 g)" },
+      { words: ["almond", "almonds"], per100: 575, basis: "almonds (per 100 g)" },
+    ];
+
+    function detectCategoryFromText(text) {
+      const t = text.toLowerCase();
+      if (t.match(/banana|apple|orange|strawber|grape/)) return "fruit";
+      if (t.match(/broccoli|carrot|lettuce|salad|spinach|cucumber/)) return "vegetable";
+      if (t.match(/chicken|turkey|tuna|cod/)) return "lean_protein";
+      if (t.match(/salmon|pork belly|bacon/)) return "fatty_protein";
+      if (t.match(/rice|pasta|noodle|potato|mashed/)) return "starch";
+      if (t.match(/bread|bun|bagel|toast/)) return "bread";
+      if (t.match(/cake|cookie|ice cream|brownie|donut|muffin/)) return "snack_sweet";
+      if (t.match(/chips|crisps|nacho|pretzel/)) return "snack_savory";
+      if (t.match(/pizza|burger|fries|kebab|shawarma/)) return "fast_food";
+      if (t.match(/cheese/)) return "cheese";
+      if (t.match(/peanut|almond|walnut|cashew|nut/)) return "nuts";
+      if (t.match(/juice|soda|cola|coke|sprite|fanta|energy drink/)) return "drink_sugary";
+      if (t.match(/diet|zero sugar|zero-cal|zero cal/)) return "drink_zero";
+      return "fast_food";
+    }
+
+    function estimateCalories(name, grams, userCategory) {
+      const text = name.toLowerCase();
+
+      let keywordMatch = null;
+      for (const rule of KEYWORD_MODEL) {
+        if (rule.words.some((w) => text.includes(w))) {
+          keywordMatch = rule;
+          break;
         }
       }
 
-      function saveData(data) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      const category =
+        userCategory && userCategory !== "auto"
+          ? userCategory
+          : detectCategoryFromText(text);
+
+      let per100 = null;
+      let basis = "";
+
+      if (keywordMatch) {
+        per100 = keywordMatch.per100;
+        basis = keywordMatch.basis;
+      } else if (CATEGORY_PER100[category] != null) {
+        per100 = CATEGORY_PER100[category];
+        basis = "category: " + category.replace("_", " ");
+      } else {
+        per100 = 220;
+        basis = "generic mixed meal";
       }
 
-      const data = loadData();
+      const kcal = Math.round((per100 * grams) / 100);
+      return {
+        calories: kcal,
+        per100: per100,
+        category,
+        basis,
+      };
+    }
 
-      const dailyGoalInput = document.getElementById("dailyGoal");
-      const saveGoalBtn = document.getElementById("saveGoalBtn");
-      const resetAllBtn = document.getElementById("resetAllBtn");
-
-      const statConsumedEl = document.getElementById("statConsumed");
-      const statConsumedCountEl = document.getElementById("statConsumedCount");
-      const statRemainingEl = document.getElementById("statRemaining");
-      const statRemainingHintEl = document.getElementById("statRemainingHint");
-      const statBalanceEl = document.getElementById("statBalance");
-      const statBalanceHintEl = document.getElementById("statBalanceHint");
-
-      const progressCircleEl = document.getElementById("progressCircle");
-      const progressPercentEl = document.getElementById("progressPercent");
-      const progressLabelEl = document.getElementById("progressLabel");
-      const progressBadgeEl = document.getElementById("progressBadge");
-
-      const infoTextEl = document.getElementById("infoText");
-      const overGoalAlertEl = document.getElementById("overGoalAlert");
-      const overGoalTextEl = document.getElementById("overGoalText");
-
-      const currentDateLabelEl = document.getElementById("currentDateLabel");
-      const datePickerEl = document.getElementById("datePicker");
-      const clearDayBtn = document.getElementById("clearDayBtn");
-
-      const entryForm = document.getElementById("entryForm");
-      const mealNameInput = document.getElementById("mealName");
-      const mealGramsInput = document.getElementById("mealGrams");
-      const mealCategorySelect = document.getElementById("mealCategory");
-
-      const entriesListEl = document.getElementById("entriesList");
-      const emptyStateEl = document.getElementById("emptyState");
-
-      const circleRadius = 48;
-      const circleCircumference = 2 * Math.PI * circleRadius;
-
-      function todayISO() {
-        const d = new Date();
-        const y = d.getFullYear();
-        const m = String(d.getMonth() + 1).padStart(2, "0");
-        const day = String(d.getDate()).padStart(2, "0");
-        return y + "-" + m + "-" + day;
+    function renderEntries() {
+      const entries = currentDayData.entries || [];
+      entriesListEl.innerHTML = "";
+      if (entries.length === 0) {
+        emptyStateEl.style.display = "block";
+        return;
       }
+      emptyStateEl.style.display = "none";
 
-      function formatDateLabel(dateStr) {
-        const date = new Date(dateStr + "T00:00");
-        const todayStr = todayISO();
-        if (dateStr === todayStr) return "Today";
-        const yest = new Date();
-        yest.setDate(yest.getDate() - 1);
-        const tomo = new Date();
-        tomo.setDate(tomo.getDate() + 1);
-        const iso = date.toISOString().slice(0, 10);
-        if (iso === yest.toISOString().slice(0, 10)) return "Yesterday";
-        if (iso === tomo.toISOString().slice(0, 10)) return "Tomorrow";
-        return date.toLocaleDateString(undefined, {
-          weekday: "short",
-          month: "short",
-          day: "numeric",
+      entries
+        .slice()
+        .sort((a, b) => a.id.localeCompare(b.id))
+        .forEach((entry) => {
+          const root = document.createElement("div");
+          root.className = "entry";
+
+          const main = document.createElement("div");
+          main.className = "entry-main";
+
+          const nameEl = document.createElement("div");
+          nameEl.className = "entry-name";
+          nameEl.textContent = entry.name || "(no description)";
+          main.appendChild(nameEl);
+
+          const meta = document.createElement("div");
+          meta.className = "entry-meta";
+
+          const gramsBadge = document.createElement("span");
+          gramsBadge.className = "badge-pill";
+          gramsBadge.textContent = (entry.grams || 0) + " g";
+          meta.appendChild(gramsBadge);
+
+          if (entry.category && entry.category !== "auto") {
+            const catBadge = document.createElement("span");
+            catBadge.className = "badge-pill";
+            catBadge.textContent = entry.category.replace("_", " ");
+            meta.appendChild(catBadge);
+          }
+
+          if (entry.modelBasis) {
+            const basisBadge = document.createElement("span");
+            basisBadge.className = "badge-pill";
+            basisBadge.textContent = entry.modelBasis;
+            meta.appendChild(basisBadge);
+          }
+
+          main.appendChild(meta);
+
+          const calEl = document.createElement("div");
+          calEl.className = "entry-calories";
+          calEl.textContent = (entry.calories || 0) + " kcal";
+
+          const actions = document.createElement("div");
+          actions.className = "entry-actions";
+
+          const fineTuneBtn = document.createElement("button");
+          fineTuneBtn.className = "btn-icon";
+          fineTuneBtn.type = "button";
+          fineTuneBtn.textContent = "Adjust";
+          fineTuneBtn.addEventListener("click", async () => {
+            const current = entry.calories || 0;
+            const v = prompt("Adjust calories for this entry:", String(current));
+            if (v == null) return;
+            const num = Number(v);
+            if (!Number.isFinite(num) || num <= 0) return;
+            entry.calories = Math.round(num);
+            await saveCurrentDay();
+            updateStatsAndUI();
+          });
+
+          const deleteBtn = document.createElement("button");
+          deleteBtn.className = "btn-icon btn-danger";
+          deleteBtn.type = "button";
+          deleteBtn.textContent = "Delete";
+          deleteBtn.addEventListener("click", async () => {
+            currentDayData.entries = (currentDayData.entries || []).filter(
+              (e) => e.id !== entry.id,
+            );
+            await saveCurrentDay();
+            updateStatsAndUI();
+          });
+
+          actions.appendChild(fineTuneBtn);
+          actions.appendChild(deleteBtn);
+
+          root.appendChild(main);
+          root.appendChild(calEl);
+          root.appendChild(actions);
+
+          entriesListEl.appendChild(root);
         });
+    }
+
+    function updateStatsAndUI() {
+      const entries = currentDayData.entries || [];
+      const total = entries.reduce((sum, e) => sum + (e.calories || 0), 0);
+
+      statConsumedEl.textContent = String(total);
+      statConsumedCountEl.textContent =
+        entries.length === 1 ? "1 entry" : entries.length + " entries";
+
+      const dayGoal =
+        typeof currentDayData.goal === "number" && currentDayData.goal > 0
+          ? currentDayData.goal
+          : null;
+
+      if (dayGoal) {
+        dailyGoalInput.value = String(dayGoal);
+        const remaining = Math.max(dayGoal - total, 0);
+        const balance = dayGoal - total;
+
+        statRemainingEl.textContent = String(remaining);
+        statRemainingHintEl.textContent =
+          remaining === 0
+            ? "Goal reached or exceeded"
+            : "You can still consume " + remaining + " kcal";
+
+        statBalanceEl.textContent = String(balance);
+        statBalanceHintEl.textContent =
+          balance >= 0 ? "Under daily goal" : "Over daily goal";
+
+        const progress = total <= 0 ? 0 : Math.min((total / dayGoal) * 100, 200);
+        const percentText = Math.round(Math.min((total / dayGoal) * 100, 999));
+        const offset = circleCircumference * (1 - Math.min(progress / 100, 1));
+        progressCircleEl.style.strokeDasharray = circleCircumference.toFixed(2);
+        progressCircleEl.style.strokeDashoffset = offset.toFixed(2);
+        progressPercentEl.textContent = percentText + "%";
+        progressLabelEl.textContent = "of " + dayGoal + " kcal goal";
+
+        if (total === 0) {
+          progressBadgeEl.textContent = "Start logging meals to see progress.";
+        } else if (progress < 70) {
+          progressBadgeEl.textContent = "Plenty of room left today.";
+        } else if (progress <= 100) {
+          progressBadgeEl.textContent = "You’re close to your goal.";
+        } else {
+          progressBadgeEl.textContent = "You’re above today’s goal.";
+        }
+
+        if (balance < 0) {
+          overGoalTextEl.textContent =
+            "You are " + Math.abs(balance) + " kcal over your daily goal for this day.";
+          overGoalAlertEl.style.display = "flex";
+        } else {
+          overGoalAlertEl.style.display = "none";
+        }
+
+        infoTextEl.innerHTML =
+          "Goal and entries for each date are stored under your user in Firestore. Calories come from a small, built-in rule-based model; you can fine-tune each entry if needed.";
+      } else {
+        statRemainingEl.textContent = "0";
+        statRemainingHintEl.textContent = "Set a goal to see remaining";
+        statBalanceEl.textContent = "0";
+        statBalanceHintEl.textContent = "Goal − Consumed";
+
+        progressCircleEl.style.strokeDasharray = circleCircumference.toFixed(2);
+        progressCircleEl.style.strokeDashoffset = circleCircumference.toFixed(2);
+        progressPercentEl.textContent = "0%";
+        progressLabelEl.textContent = "of daily goal";
+        progressBadgeEl.textContent = "Set a goal to begin";
+        overGoalAlertEl.style.display = "none";
+
+        infoTextEl.innerHTML =
+          "You can log food without a goal. Everything is saved against your Firestore user; the model estimates calories automatically from your inputs.";
       }
 
-      function setCurrentDate(dateStr) {
-        datePickerEl.value = dateStr;
-        currentDateLabelEl.textContent = formatDateLabel(dateStr);
+      renderEntries();
+    }
+
+    async function loadDayForCurrentUser(dateStr) {
+      if (!currentUser) return;
+      const ref = getDayDocRef(currentUser.uid, dateStr);
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        const data = snap.data();
+        currentDayData = {
+          goal: typeof data.goal === "number" ? data.goal : null,
+          entries: Array.isArray(data.entries) ? data.entries : [],
+        };
+      } else {
+        currentDayData = { goal: null, entries: [] };
+      }
+      updateStatsAndUI();
+    }
+
+    async function saveCurrentDay() {
+      if (!currentUser || !currentDate) return;
+      const ref = getDayDocRef(currentUser.uid, currentDate);
+      const payload = {
+        goal:
+          typeof currentDayData.goal === "number" && currentDayData.goal > 0
+            ? currentDayData.goal
+            : null,
+        entries: Array.isArray(currentDayData.entries)
+          ? currentDayData.entries
+          : [],
+        updatedAt: new Date(),
+      };
+      await setDoc(ref, payload, { merge: true });
+    }
+
+    // --------- AUTH EVENT HANDLERS ---------
+
+    signUpBtn.addEventListener("click", async () => {
+      const email = signUpEmailEl.value.trim();
+      const password = signUpPasswordEl.value;
+      showAuthMessage(signUpMessageEl, "", "");
+      if (!isValidEmailFormat(email)) {
+        showAuthMessage(signUpMessageEl, "Enter a valid email address.", "error");
+        return;
+      }
+      if (!password || password.length < 6) {
+        showAuthMessage(
+          signUpMessageEl,
+          "Password must be at least 6 characters.",
+          "error",
+        );
+        return;
+      }
+      try {
+        const cred = await createUserWithEmailAndPassword(auth, email, password);
+        await sendEmailVerification(cred.user);
+        showAuthMessage(
+          signUpMessageEl,
+          "Account created. A verification email has been sent.",
+          "ok",
+        );
+        showAuthMessage(
+          globalAuthMessageEl,
+          "Check your inbox and click the verification link.",
+          "ok",
+        );
+      } catch (err) {
+        const msg = err?.message || "Sign-up failed.";
+        showAuthMessage(signUpMessageEl, msg, "error");
+      }
+    });
+
+    signInBtn.addEventListener("click", async () => {
+      const email = signInEmailEl.value.trim();
+      const password = signInPasswordEl.value;
+      showAuthMessage(signInMessageEl, "", "");
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        showAuthMessage(signInMessageEl, "Signed in.", "ok");
+      } catch (err) {
+        const msg = err?.message || "Sign-in failed.";
+        showAuthMessage(signInMessageEl, msg, "error");
+      }
+    });
+
+    signOutBtn.addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+      } catch (err) {
+        showAuthMessage(globalAuthMessageEl, "Sign-out failed.", "error");
+      }
+    });
+
+    resetAllBtn.addEventListener("click", async () => {
+      if (!currentUser) return;
+      const confirmed = confirm(
+        "This will delete all your day documents in Firestore for this user. You cannot undo this. Continue?",
+      );
+      if (!confirmed) return;
+
+      // For simplicity: delete just the current day; for full wipe you would
+      // need a backend script or Firestore function. Here we clear this day
+      // and reset goal in memory.
+      try {
+        const ref = getDayDocRef(currentUser.uid, currentDate || todayISO());
+        await deleteDoc(ref);
+        currentDayData = { goal: null, entries: [] };
+        updateStatsAndUI();
+        showAuthMessage(globalAuthMessageEl, "Current day cleared from Firestore.", "ok");
+      } catch (err) {
+        showAuthMessage(globalAuthMessageEl, "Failed to clear day.", "error");
+      }
+    });
+
+    // --------- TRACKER EVENTS ---------
+
+    saveGoalBtn.addEventListener("click", async () => {
+      if (!currentUser) return;
+      const v = dailyGoalInput.value.trim();
+      if (!v) {
+        currentDayData.goal = null;
+      } else {
+        const n = Number(v);
+        if (!Number.isFinite(n) || n <= 0) {
+          dailyGoalInput.focus();
+          return;
+        }
+        currentDayData.goal = Math.round(n);
+      }
+      await saveCurrentDay();
+      updateStatsAndUI();
+    });
+
+    entryForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!currentUser) return;
+      const name = mealNameInput.value.trim();
+      const grams = Number(mealGramsInput.value);
+      const category = mealCategorySelect.value || "auto";
+      if (!name) {
+        mealNameInput.focus();
+        return;
+      }
+      if (!Number.isFinite(grams) || grams <= 0) {
+        mealGramsInput.focus();
+        return;
       }
 
-      function getSelectedDate() {
-        return datePickerEl.value || todayISO();
-      }
-
-      const CATEGORY_PER100 = {
-        fruit: 60,
-        vegetable: 30,
-        lean_protein: 165,
-        fatty_protein: 250,
-        starch: 140,
-        bread: 250,
-        snack_sweet: 430,
-        snack_savory: 540,
-        fast_food: 260,
-        cheese: 380,
-        nuts: 600,
-        drink_sugary: 45,
-        drink_zero: 1,
+      const est = estimateCalories(name, grams, category);
+      const entry = {
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+        date: currentDate,
+        name: name,
+        grams: Math.round(grams),
+        calories: est.calories,
+        category: est.category,
+        modelBasis: est.basis + " · " + est.per100 + " kcal / 100 g",
       };
 
-      const KEYWORD_MODEL = [
-        { words: ["banana"], per100: 89, basis: "banana (per 100 g)" },
-        { words: ["apple"], per100: 52, basis: "apple (per 100 g)" },
-        { words: ["orange"], per100: 47, basis: "orange (per 100 g)" },
-        { words: ["strawberry", "strawberries"], per100: 33, basis: "strawberry (per 100 g)" },
-        { words: ["grape", "grapes"], per100: 69, basis: "grapes (per 100 g)" },
+      if (!Array.isArray(currentDayData.entries)) currentDayData.entries = [];
+      currentDayData.entries.push(entry);
+      await saveCurrentDay();
+      updateStatsAndUI();
 
-        { words: ["chicken breast", "grilled chicken"], per100: 165, basis: "grilled chicken breast (per 100 g)" },
-        { words: ["salmon"], per100: 208, basis: "salmon (per 100 g)" },
-        { words: ["beef", "steak"], per100: 250, basis: "beef (per 100 g)" },
+      mealNameInput.value = "";
+      mealGramsInput.value = "";
+      mealCategorySelect.value = "auto";
+      mealNameInput.focus();
+    });
 
-        { words: ["rice"], per100: 130, basis: "cooked white rice (per 100 g)" },
-        { words: ["brown rice"], per100: 111, basis: "cooked brown rice (per 100 g)" },
-        { words: ["pasta"], per100: 160, basis: "cooked pasta (per 100 g)" },
-        { words: ["potato", "fries", "fry"], per100: 190, basis: "fried potatoes (per 100 g)" },
+    clearDayBtn.addEventListener("click", async () => {
+      if (!currentUser) return;
+      if (!currentDayData.entries || currentDayData.entries.length === 0) return;
+      const confirmed = confirm(
+        "Delete all entries for " + formatDateLabel(currentDate) + "? This cannot be undone.",
+      );
+      if (!confirmed) return;
+      currentDayData.entries = [];
+      await saveCurrentDay();
+      updateStatsAndUI();
+    });
 
-        { words: ["bread"], per100: 260, basis: "bread (per 100 g)" },
-        { words: ["pizza"], per100: 270, basis: "pizza (per 100 g)" },
-        { words: ["burger"], per100: 260, basis: "burger (per 100 g)" },
-
-        { words: ["chips", "crisps"], per100: 540, basis: "potato chips (per 100 g)" },
-        { words: ["cookie", "cookies"], per100: 480, basis: "cookies (per 100 g)" },
-        { words: ["chocolate"], per100: 540, basis: "milk chocolate (per 100 g)" },
-
-        { words: ["coke", "cola", "soda"], per100: 40, basis: "sugary soft drink (per 100 g)" },
-        { words: ["juice"], per100: 45, basis: "fruit juice (per 100 g)" },
-        { words: ["coffee", "tea"], per100: 2, basis: "plain coffee/tea (per 100 g)" },
-
-        { words: ["cheese"], per100: 380, basis: "cheese (per 100 g)" },
-        { words: ["peanut", "peanuts", "peanut butter"], per100: 588, basis: "peanuts / peanut butter (per 100 g)" },
-        { words: ["almond", "almonds"], per100: 575, basis: "almonds (per 100 g)" },
-      ];
-
-      function detectCategoryFromText(text) {
-        const t = text.toLowerCase();
-        if (t.match(/banana|apple|orange|strawber|grape/)) return "fruit";
-        if (t.match(/broccoli|carrot|lettuce|salad|spinach|cucumber/)) return "vegetable";
-        if (t.match(/chicken|turkey|tuna|cod/)) return "lean_protein";
-        if (t.match(/salmon|pork belly|bacon/)) return "fatty_protein";
-        if (t.match(/rice|pasta|noodle|potato|mashed/)) return "starch";
-        if (t.match(/bread|bun|bagel|toast/)) return "bread";
-        if (t.match(/cake|cookie|ice cream|brownie|donut|muffin/)) return "snack_sweet";
-        if (t.match(/chips|crisps|nacho|pretzel/)) return "snack_savory";
-        if (t.match(/pizza|burger|fries|kebab|shawarma/)) return "fast_food";
-        if (t.match(/cheese/)) return "cheese";
-        if (t.match(/peanut|almond|walnut|cashew|nut/)) return "nuts";
-        if (t.match(/juice|soda|cola|coke|sprite|fanta|energy drink/)) return "drink_sugary";
-        if (t.match(/diet|zero sugar|zero-cal|zero cal/)) return "drink_zero";
-        return "fast_food";
+    datePickerEl.addEventListener("change", async () => {
+      if (!datePickerEl.value) {
+        datePickerEl.value = todayISO();
       }
-
-      function estimateCalories(name, grams, userCategory) {
-        const text = name.toLowerCase();
-
-        let keywordMatch = null;
-        for (const rule of KEYWORD_MODEL) {
-          if (rule.words.some((w) => text.includes(w))) {
-            keywordMatch = rule;
-            break;
-          }
-        }
-
-        const category =
-          userCategory && userCategory !== "auto"
-            ? userCategory
-            : detectCategoryFromText(text);
-
-        let per100 = null;
-        let basis = "";
-
-        if (keywordMatch) {
-          per100 = keywordMatch.per100;
-          basis = keywordMatch.basis;
-        } else if (CATEGORY_PER100[category] != null) {
-          per100 = CATEGORY_PER100[category];
-          basis = "category: " + category.replace("_", " ");
-        } else {
-          per100 = 220;
-          basis = "generic mixed meal";
-        }
-
-        const kcal = Math.round((per100 * grams) / 100);
-        return {
-          calories: kcal,
-          per100: per100,
-          category,
-          basis,
-        };
-      }
-
-      function getEntriesForDate(dateStr) {
-        return data.entries.filter((e) => e.date === dateStr);
-      }
-
-      function addEntry(name, grams, category, est) {
-        const entry = {
-          id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
-          date: getSelectedDate(),
-          name: name.trim(),
-          grams,
-          calories: est.calories,
-          category,
-          modelBasis: est.basis + " · " + est.per100 + " kcal / 100 g",
-        };
-        data.entries.push(entry);
-        saveData(data);
+      const newDate = datePickerEl.value;
+      setCurrentDate(newDate);
+      if (currentUser) {
+        await loadDayForCurrentUser(newDate);
+      } else {
+        currentDayData = { goal: null, entries: [] };
         updateStatsAndUI();
       }
+    });
 
-      function deleteEntry(id) {
-        const idx = data.entries.findIndex((e) => e.id === id);
-        if (idx === -1) return;
-        data.entries.splice(idx, 1);
-        saveData(data);
+    // --------- INIT / AUTH STATE ---------
+
+    function initDates() {
+      const today = todayISO();
+      setCurrentDate(today);
+      datePickerEl.value = today;
+    }
+
+    onAuthStateChanged(auth, async (user) => {
+      currentUser = user;
+      updateAuthUI(user);
+      if (user) {
+        initDates();
+        await loadDayForCurrentUser(currentDate);
+      } else {
+        currentDayData = { goal: null, entries: [] };
         updateStatsAndUI();
       }
+    });
 
-      function clearDay(dateStr) {
-        data.entries = data.entries.filter((e) => e.date !== dateStr);
-        saveData(data);
-        updateStatsAndUI();
-      }
-
-      function renderEntries(dateStr) {
-        const entries = getEntriesForDate(dateStr);
-        entriesListEl.innerHTML = "";
-        if (entries.length === 0) {
-          emptyStateEl.style.display = "block";
-          return;
-        }
-        emptyStateEl.style.display = "none";
-
-        entries
-          .slice()
-          .sort((a, b) => a.id.localeCompare(b.id))
-          .forEach((entry) => {
-            const root = document.createElement("div");
-            root.className = "entry";
-
-            const main = document.createElement("div");
-            main.className = "entry-main";
-
-            const nameEl = document.createElement("div");
-            nameEl.className = "entry-name";
-            nameEl.textContent = entry.name || "(no description)";
-            main.appendChild(nameEl);
-
-            const meta = document.createElement("div");
-            meta.className = "entry-meta";
-
-            const gramsBadge = document.createElement("span");
-            gramsBadge.className = "badge-pill";
-            gramsBadge.textContent = entry.grams + " g";
-            meta.appendChild(gramsBadge);
-
-            if (entry.category && entry.category !== "auto") {
-              const catBadge = document.createElement("span");
-              catBadge.className = "badge-pill";
-              catBadge.textContent = entry.category.replace("_", " ");
-              meta.appendChild(catBadge);
-            }
-
-            if (entry.modelBasis) {
-              const basisBadge = document.createElement("span");
-              basisBadge.className = "badge-pill";
-              basisBadge.textContent = entry.modelBasis;
-              meta.appendChild(basisBadge);
-            }
-
-            main.appendChild(meta);
-
-            const calEl = document.createElement("div");
-            calEl.className = "entry-calories";
-            calEl.textContent = entry.calories + " kcal";
-
-            const actions = document.createElement("div");
-            actions.className = "entry-actions";
-
-            const fineTuneBtn = document.createElement("button");
-            fineTuneBtn.className = "btn-icon";
-            fineTuneBtn.type = "button";
-            fineTuneBtn.textContent = "Adjust";
-            fineTuneBtn.addEventListener("click", function () {
-              const current = entry.calories;
-              const v = prompt(
-                "Adjust calories for this entry:",
-                String(current)
-              );
-              if (v == null) return;
-              const num = Number(v);
-              if (!Number.isFinite(num) || num <= 0) return;
-              entry.calories = Math.round(num);
-              saveData(data);
-              updateStatsAndUI();
-            });
-
-            const deleteBtn = document.createElement("button");
-            deleteBtn.className = "btn-icon btn-danger";
-            deleteBtn.type = "button";
-            deleteBtn.textContent = "Delete";
-            deleteBtn.addEventListener("click", function () {
-              deleteEntry(entry.id);
-            });
-
-            actions.appendChild(fineTuneBtn);
-            actions.appendChild(deleteBtn);
-
-            root.appendChild(main);
-            root.appendChild(calEl);
-            root.appendChild(actions);
-
-            entriesListEl.appendChild(root);
-          });
-      }
-
-      function updateStatsAndUI() {
-        const dateStr = getSelectedDate();
-        const entries = getEntriesForDate(dateStr);
-        const total = entries.reduce((sum, e) => sum + e.calories, 0);
-
-        statConsumedEl.textContent = String(total);
-        statConsumedCountEl.textContent =
-          entries.length === 1 ? "1 entry" : entries.length + " entries";
-
-        if (typeof data.goal === "number" && data.goal > 0) {
-          const remaining = Math.max(data.goal - total, 0);
-          const balance = data.goal - total;
-
-          statRemainingEl.textContent = String(remaining);
-          statRemainingHintEl.textContent =
-            remaining === 0
-              ? "Goal reached or exceeded"
-              : "You can still consume " + remaining + " kcal";
-
-          statBalanceEl.textContent = String(balance);
-          statBalanceHintEl.textContent =
-            balance >= 0 ? "Under daily goal" : "Over daily goal";
-
-          const progress = total <= 0 ? 0 : Math.min((total / data.goal) * 100, 200);
-          const percentText = Math.round(
-            Math.min((total / data.goal) * 100, 999)
-          );
-          const offset =
-            circleCircumference * (1 - Math.min(progress / 100, 1));
-          progressCircleEl.style.strokeDasharray = circleCircumference.toFixed(2);
-          progressCircleEl.style.strokeDashoffset = offset.toFixed(2);
-          progressPercentEl.textContent = percentText + "%";
-          progressLabelEl.textContent = "of " + data.goal + " kcal goal";
-
-          if (total === 0) {
-            progressBadgeEl.textContent = "Start logging meals to see progress.";
-          } else if (progress < 70) {
-            progressBadgeEl.textContent = "Plenty of room left today.";
-          } else if (progress <= 100) {
-            progressBadgeEl.textContent = "You’re close to your goal.";
-          } else {
-            progressBadgeEl.textContent = "You’re above today’s goal.";
-          }
-
-          if (balance < 0) {
-            overGoalTextEl.textContent =
-              "You are " +
-              Math.abs(balance) +
-              " kcal over your daily goal for this day.";
-            overGoalAlertEl.style.display = "flex";
-          } else {
-            overGoalAlertEl.style.display = "none";
-          }
-
-          infoTextEl.innerHTML =
-            "Goal and entries are cached locally. Calories come from a small, built-in rule-based model; you can fine-tune each entry if needed.";
-        } else {
-          statRemainingEl.textContent = "0";
-          statRemainingHintEl.textContent = "Set a goal to see remaining";
-          statBalanceEl.textContent = "0";
-          statBalanceHintEl.textContent = "Goal − Consumed";
-
-          progressCircleEl.style.strokeDasharray = circleCircumference.toFixed(2);
-          progressCircleEl.style.strokeDashoffset =
-            circleCircumference.toFixed(2);
-          progressPercentEl.textContent = "0%";
-          progressLabelEl.textContent = "of daily goal";
-          progressBadgeEl.textContent = "Set a goal to begin";
-          overGoalAlertEl.style.display = "none";
-
-          infoTextEl.innerHTML =
-            "You can log food without a goal. Everything stays in this browser; the model estimates calories automatically from your inputs.";
-        }
-
-        renderEntries(dateStr);
-      }
-
-      function init() {
-        const today = todayISO();
-        setCurrentDate(today);
-        datePickerEl.value = today;
-
-        if (typeof data.goal === "number" && data.goal > 0) {
-          dailyGoalInput.value = String(data.goal);
-        }
-
-        updateStatsAndUI();
-      }
-
-      entryForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const name = mealNameInput.value.trim();
-        const grams = Number(mealGramsInput.value);
-        const category = mealCategorySelect.value || "auto";
-        if (!name) {
-          mealNameInput.focus();
-          return;
-        }
-        if (!Number.isFinite(grams) || grams <= 0) {
-          mealGramsInput.focus();
-          return;
-        }
-
-        const est = estimateCalories(name, grams, category);
-        addEntry(name, Math.round(grams), est.category, est);
-
-        mealNameInput.value = "";
-        mealGramsInput.value = "";
-        mealCategorySelect.value = "auto";
-        mealNameInput.focus();
-      });
-
-      saveGoalBtn.addEventListener("click", function () {
-        const v = dailyGoalInput.value.trim();
-        if (!v) {
-          data.goal = null;
-        } else {
-          const n = Number(v);
-          if (!Number.isFinite(n) || n <= 0) {
-            dailyGoalInput.focus();
-            return;
-          }
-          data.goal = Math.round(n);
-        }
-        saveData(data);
-        updateStatsAndUI();
-      });
-
-      datePickerEl.addEventListener("change", function () {
-        if (!datePickerEl.value) {
-          datePickerEl.value = todayISO();
-        }
-        currentDateLabelEl.textContent = formatDateLabel(getSelectedDate());
-        updateStatsAndUI();
-      });
-
-      clearDayBtn.addEventListener("click", function () {
-        const dateStr = getSelectedDate();
-        if (!getEntriesForDate(dateStr).length) return;
-        if (
-          confirm(
-            "Delete all entries for " +
-              formatDateLabel(dateStr) +
-              "?\nThis cannot be undone."
-          )
-        ) {
-          clearDay(dateStr);
-        }
-      });
-
-      resetAllBtn.addEventListener("click", function () {
-        if (
-          confirm(
-            "This will erase all entries and your goal from this browser. Continue?"
-          )
-        ) {
-          localStorage.removeItem(STORAGE_KEY);
-          const fresh = loadData();
-          data.goal = fresh.goal;
-          data.entries = fresh.entries;
-          dailyGoalInput.value = "";
-          setCurrentDate(todayISO());
-          updateStatsAndUI();
-        }
-      });
-
-      init();
-    })();
+    initDates();
+    updateStatsAndUI();
   </script>
 </body>
 </html>
