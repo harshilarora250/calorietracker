@@ -52,8 +52,6 @@
       gap: 16px;
     }
 
-    /* HEADER */
-
     header {
       background: var(--bg-header);
       border-radius: 16px;
@@ -205,8 +203,6 @@
       background: #fee2e2;
     }
 
-    /* ACCOUNT CARD */
-
     .account-card {
       background: var(--bg-card);
       border-radius: 16px;
@@ -334,8 +330,6 @@
       color: #166534;
     }
 
-    /* LAYOUT */
-
     main {
       display: grid;
       grid-template-columns: 1.05fr 1.05fr;
@@ -397,8 +391,6 @@
       border-radius: 999px;
       background: radial-gradient(circle, var(--accent) 0, #15803d 55%, transparent 60%);
     }
-
-    /* SUMMARY CARD */
 
     .goal-row {
       display: grid;
@@ -611,8 +603,6 @@
       text-align: right;
     }
 
-    /* LOG CARD */
-
     .date-row {
       display: flex;
       align-items: center;
@@ -762,8 +752,6 @@
       position: relative;
     }
 
-    /* RESPONSIVE */
-
     @media (max-width: 900px) {
       .account-card {
         grid-template-columns: minmax(0, 1fr);
@@ -854,7 +842,7 @@
         <div class="title-block">
           <h1>
             CalLog
-            <span class="badge">Firebase · Email sign-in</span>
+            <span class="badge">Secure email sign-in</span>
           </h1>
           <p>Sign in, then log food; calories are estimated on-device.</p>
         </div>
@@ -864,7 +852,6 @@
       </button>
     </header>
 
-    <!-- ACCOUNT / AUTH -->
     <section class="account-card">
       <div>
         <div class="account-section-title">Account</div>
@@ -922,7 +909,6 @@
     </section>
 
     <main>
-      <!-- LEFT: SUMMARY -->
       <section class="card relative" id="summaryCard">
         <div class="card-header">
           <div class="card-header-main">
@@ -931,7 +917,7 @@
           </div>
           <div class="chip">
             <span class="chip-dot"></span>
-            <span>Stored per user in Firestore</span>
+            <span>Stored per user in your account</span>
           </div>
         </div>
 
@@ -1014,7 +1000,7 @@
               <div class="alert-icon">ℹ</div>
               <p id="infoText">
                 After you sign in, your daily goal and entries for each date are stored
-                in your Firestore user document. Calories are estimated on-device by a
+                securely with your account. Calories are estimated on-device by a
                 small rule-based model. Verification emails may be in Spam/Junk.
               </p>
             </div>
@@ -1043,7 +1029,6 @@
         </div>
       </section>
 
-      <!-- RIGHT: LOG -->
       <section class="card relative" id="logCard">
         <div class="card-header">
           <div class="card-header-main">
@@ -1123,7 +1108,7 @@
   </div>
 
   <script type="module">
-    // Firebase SDK imports via CDN (modular v11 API)
+    // Firebase SDK imports via CDN
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
     import {
       getAuth,
@@ -1141,7 +1126,6 @@
       deleteDoc,
     } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
 
-    // Firebase configuration for CalLog (public client config)
     const firebaseConfig = {
       apiKey: "AIzaSyAhlSU9QQD9etz_lI9XPT0JDyx5NV6UUxg",
       authDomain: "callog-caltracker.firebaseapp.com",
@@ -1155,7 +1139,6 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    // DOM refs (auth)
     const accountStatusEl = document.getElementById("accountStatus");
     const verifyPillEl = document.getElementById("verifyPill");
     const verifyDotEl = document.getElementById("verifyDot");
@@ -1176,7 +1159,6 @@
 
     const authFormsEl = document.getElementById("authForms");
 
-    // DOM refs (tracker)
     const dailyGoalInput = document.getElementById("dailyGoal");
     const saveGoalBtn = document.getElementById("saveGoalBtn");
     const resetAllBtn = document.getElementById("resetAllBtn");
@@ -1255,6 +1237,38 @@
       return doc(db, "users", uid, "days", dateStr);
     }
 
+    function showAuthMessage(el, msg, type) {
+      el.textContent = msg || "";
+      el.classList.remove("error", "ok");
+      if (type === "error") el.classList.add("error");
+      if (type === "ok") el.classList.add("ok");
+    }
+
+    function isValidEmailFormat(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function getFriendlyAuthError(err) {
+      const code = err?.code || "";
+      switch (code) {
+        case "auth/email-already-in-use":
+          return "An account with this email already exists.";
+        case "auth/invalid-email":
+          return "That email address looks invalid.";
+        case "auth/weak-password":
+          return "Password is too weak. Use at least 6 characters.";
+        case "auth/user-not-found":
+        case "auth/wrong-password":
+          return "Incorrect email or password.";
+        case "auth/too-many-requests":
+          return "Too many attempts. Please wait a bit and try again.";
+        case "auth/network-request-failed":
+          return "Network error. Check your connection and try again.";
+        default:
+          return "Something went wrong. Please try again.";
+      }
+    }
+
     function updateAuthUI(user) {
       if (!user) {
         accountStatusEl.textContent = "Not signed in.";
@@ -1281,19 +1295,6 @@
       summaryDisabledOverlayEl.style.display = "none";
       logDisabledOverlayEl.style.display = "none";
     }
-
-    function showAuthMessage(el, msg, type) {
-      el.textContent = msg || "";
-      el.classList.remove("error", "ok");
-      if (type === "error") el.classList.add("error");
-      if (type === "ok") el.classList.add("ok");
-    }
-
-    function isValidEmailFormat(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    // --------- SIMPLE CALORIE MODEL ---------
 
     const CATEGORY_PER100 = {
       fruit: 60,
@@ -1549,7 +1550,7 @@
         }
 
         infoTextEl.innerHTML =
-          "Goal and entries for each date are stored under your user in Firestore. Calories come from a small, built-in rule-based model; you can fine-tune each entry if needed. Verification emails may be in Spam/Junk.";
+          "Goal and entries for each date are stored securely with your account. Calories come from a small, built-in rule-based model; you can fine-tune each entry if needed. Verification emails may be in Spam/Junk.";
       } else {
         statRemainingEl.textContent = "0";
         statRemainingHintEl.textContent = "Set a goal to see remaining";
@@ -1564,7 +1565,7 @@
         overGoalAlertEl.style.display = "none";
 
         infoTextEl.innerHTML =
-          "You can log food without a goal. Everything is saved against your CalLog Firestore user; the model estimates calories automatically from your inputs. Verification emails may be in Spam/Junk.";
+          "You can log food without a goal. Everything is saved against your CalLog account; the model estimates calories automatically from your inputs. Verification emails may be in Spam/Junk.";
       }
 
       renderEntries();
@@ -1602,8 +1603,6 @@
       await setDoc(ref, payload, { merge: true });
     }
 
-    // --------- AUTH EVENT HANDLERS ---------
-
     signUpBtn.addEventListener("click", async () => {
       const email = signUpEmailEl.value.trim();
       const password = signUpPasswordEl.value;
@@ -1634,7 +1633,7 @@
           "ok",
         );
       } catch (err) {
-        const msg = err?.message || "Sign-up failed.";
+        const msg = getFriendlyAuthError(err);
         showAuthMessage(signUpMessageEl, msg, "error");
       }
     });
@@ -1647,7 +1646,7 @@
         await signInWithEmailAndPassword(auth, email, password);
         showAuthMessage(signInMessageEl, "Signed in.", "ok");
       } catch (err) {
-        const msg = err?.message || "Sign-in failed.";
+        const msg = getFriendlyAuthError(err);
         showAuthMessage(signInMessageEl, msg, "error");
       }
     });
@@ -1663,7 +1662,7 @@
     resetAllBtn.addEventListener("click", async () => {
       if (!currentUser) return;
       const confirmed = confirm(
-        "This will delete the current day document in Firestore for this user. You cannot undo this. Continue?",
+        "This will delete the current day in your account. You cannot undo this. Continue?",
       );
       if (!confirmed) return;
       try {
@@ -1680,8 +1679,6 @@
         showAuthMessage(globalAuthMessageEl, "Failed to clear day.", "error");
       }
     });
-
-    // --------- TRACKER EVENTS ---------
 
     saveGoalBtn.addEventListener("click", async () => {
       if (!currentUser) return;
@@ -1762,8 +1759,6 @@
         updateStatsAndUI();
       }
     });
-
-    // --------- INIT / AUTH STATE ---------
 
     function initDates() {
       const today = todayISO();
