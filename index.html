@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Calorie Tracker</title>
+  <title>CalLog – Calorie Tracker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
@@ -850,17 +850,17 @@
   <div class="app">
     <header>
       <div class="header-left">
-        <div class="logo">CT</div>
+        <div class="logo">CL</div>
         <div class="title-block">
           <h1>
-            Calorie Tracker
+            CalLog
             <span class="badge">Firebase · Email sign-in</span>
           </h1>
           <p>Sign in, then log food; calories are estimated on-device.</p>
         </div>
       </div>
       <button id="resetAllBtn" class="btn btn-muted" type="button">
-        Reset my account data
+        Reset current day from my account
       </button>
     </header>
 
@@ -883,8 +883,11 @@
 
       <div class="auth-forms" id="authForms">
         <div class="auth-form" id="signUpFormWrapper">
-          <h3>Create account</h3>
-          <p class="auth-note">Email + password. A verification link is sent to confirm your email.</p>
+          <h3>Create CalLog account</h3>
+          <p class="auth-note">
+            Email + password. A verification link is emailed to you
+            (it may go to your <strong>Spam/Junk</strong> folder).
+          </p>
           <div class="auth-row">
             <label for="signUpEmail">Email</label>
             <input id="signUpEmail" type="email" autocomplete="email" />
@@ -1012,7 +1015,7 @@
               <p id="infoText">
                 After you sign in, your daily goal and entries for each date are stored
                 in your Firestore user document. Calories are estimated on-device by a
-                small rule-based model.
+                small rule-based model. Verification emails may be in Spam/Junk.
               </p>
             </div>
             <div id="overGoalAlert" class="alert alert-danger" style="display:none;">
@@ -1036,7 +1039,7 @@
           Change the date on the right to review or edit previous days.
         </div>
         <div class="disabled-overlay" id="summaryDisabledOverlay" style="display:flex;">
-          Sign in to start tracking and saving your data.
+          Sign in to start tracking and saving your data in CalLog.
         </div>
       </section>
 
@@ -1113,7 +1116,7 @@
         </div>
 
         <div class="disabled-overlay" id="logDisabledOverlay" style="display:flex;">
-          Sign in to create entries linked to your account.
+          Sign in to create entries linked to your CalLog account.
         </div>
       </section>
     </main>
@@ -1138,7 +1141,7 @@
       deleteDoc,
     } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
 
-    // Your Firebase configuration (safe to expose in client; security is via rules)
+    // Firebase configuration for CalLog (public client config)
     const firebaseConfig = {
       apiKey: "AIzaSyAhlSU9QQD9etz_lI9XPT0JDyx5NV6UUxg",
       authDomain: "callog-caltracker.firebaseapp.com",
@@ -1214,7 +1217,7 @@
 
     let currentUser = null;
     let currentDate = null;
-    let currentDayData = { goal: null, entries: [] }; // kept in memory and synced to Firestore
+    let currentDayData = { goal: null, entries: [] };
 
     function todayISO() {
       const d = new Date();
@@ -1271,7 +1274,7 @@
       verifyDotEl.classList.toggle("ok", verified);
       verifyLabelEl.textContent = verified
         ? "Email verified"
-        : "Verification email sent. Check your inbox.";
+        : "Verification email sent. Check your inbox (including Spam/Junk).";
       globalAuthMessageEl.textContent = "";
       signedInActionsEl.style.display = "flex";
       authFormsEl.style.display = "none";
@@ -1286,12 +1289,11 @@
       if (type === "ok") el.classList.add("ok");
     }
 
-    // Simple email format check before Firebase
     function isValidEmailFormat(email) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
-    // --------- SIMPLE CALORIE MODEL (same as before) ---------
+    // --------- SIMPLE CALORIE MODEL ---------
 
     const CATEGORY_PER100 = {
       fruit: 60,
@@ -1547,7 +1549,7 @@
         }
 
         infoTextEl.innerHTML =
-          "Goal and entries for each date are stored under your user in Firestore. Calories come from a small, built-in rule-based model; you can fine-tune each entry if needed.";
+          "Goal and entries for each date are stored under your user in Firestore. Calories come from a small, built-in rule-based model; you can fine-tune each entry if needed. Verification emails may be in Spam/Junk.";
       } else {
         statRemainingEl.textContent = "0";
         statRemainingHintEl.textContent = "Set a goal to see remaining";
@@ -1562,7 +1564,7 @@
         overGoalAlertEl.style.display = "none";
 
         infoTextEl.innerHTML =
-          "You can log food without a goal. Everything is saved against your Firestore user; the model estimates calories automatically from your inputs.";
+          "You can log food without a goal. Everything is saved against your CalLog Firestore user; the model estimates calories automatically from your inputs. Verification emails may be in Spam/Junk.";
       }
 
       renderEntries();
@@ -1623,12 +1625,12 @@
         await sendEmailVerification(cred.user);
         showAuthMessage(
           signUpMessageEl,
-          "Account created. A verification email has been sent.",
+          "Account created. A verification email has been sent — check your Spam/Junk folder if you don’t see it.",
           "ok",
         );
         showAuthMessage(
           globalAuthMessageEl,
-          "Check your inbox and click the verification link.",
+          "Check your inbox (including Spam/Junk) and click the verification link.",
           "ok",
         );
       } catch (err) {
@@ -1661,19 +1663,19 @@
     resetAllBtn.addEventListener("click", async () => {
       if (!currentUser) return;
       const confirmed = confirm(
-        "This will delete all your day documents in Firestore for this user. You cannot undo this. Continue?",
+        "This will delete the current day document in Firestore for this user. You cannot undo this. Continue?",
       );
       if (!confirmed) return;
-
-      // For simplicity: delete just the current day; for full wipe you would
-      // need a backend script or Firestore function. Here we clear this day
-      // and reset goal in memory.
       try {
         const ref = getDayDocRef(currentUser.uid, currentDate || todayISO());
         await deleteDoc(ref);
         currentDayData = { goal: null, entries: [] };
         updateStatsAndUI();
-        showAuthMessage(globalAuthMessageEl, "Current day cleared from Firestore.", "ok");
+        showAuthMessage(
+          globalAuthMessageEl,
+          "Current day cleared from your CalLog account.",
+          "ok",
+        );
       } catch (err) {
         showAuthMessage(globalAuthMessageEl, "Failed to clear day.", "error");
       }
